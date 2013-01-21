@@ -1,0 +1,131 @@
+
+Geobatch Action list	19 Mar 2012
+rel			1
+
+================	Extract (create)
+================	Collector (create)
+================	move (create)
+================	Copy (create)
+
+
+================	FreeMarker (create)
+
+serviceID		FreeMarkerGeneratorService
+
+failIgnored		false (if some failure happens ignore it and go ahead with the next file)
+input			{'test.xml'} (template file)
+output			{'/out/'} (absolute output folder)
+nToN			{'true','false'} (generate n output from n incoming files or use all the input for the same output)
+root			{'key0=content0;key1=data1;intVal=500'} (map containig static data to use into freemarker datasource)
+
+================	Xstream (create)
+
+serviceID		XstreamGeneratorService
+output			{'PATH'} - set the output directory
+alias			{'XstreamConfiguration=it.geosolutions.geobatch.actions.xstream.XstreamConfiguration;'} (map of alias to register)
+
+================	ShapeFile to GeoServer (create)
+
+serviceID		ShapeFileGeoServerService
+geoserverPWD		{'geoserver'}
+geoserverUID		{'admin'}
+geoserverURL		{'http://localhost:8080/geoserver'}
+
+defaultNamespace	{'topp'}
+defaultStyle		{'polygon','...'}
+crs			{'EPSG:4326','...'}
+envelope		{'...'}
+dataTransferMethod	{'EXTERNAL'}
+wmsPath			{'/'}
+
+================	ImageMosaic to GeoServer (create, update)
+
+serviceID		ImageMosaicGeneratorService
+
+failIgnored		false (if some failure happens ignore it and go ahead with the next file)
+
+geoserverPWD		{'geoserver'}
+geoserverUID		{'admin'}
+geoserverURL		{'http://localhost:8080/geoserver'}
+
+defaultNamespace	{'topp'}
+defaultStyle		{'raster','...'}
+wmsPath			{'/'}
+
+backgroundValue		{'-9999'}
+outputTransparentColor	{'FFFFFF'}
+inputTransparentColor	{'FFFFFF'}
+allowMultithreading	{'true','false'}
+useJaiImageRead		{'true','false'}
+tileSizeH		{'256','512',...}
+tileSizeW		{'256','512',...}
+projectionPolicy	{'NONE','REPROJECT_TO_DECLARED','FORCE_DECLARED'}
+timeDimEnabled		{'true','false'}
+timePresentationMode	{'LIST, CONTINUOUS_INTERVAL, DISCRETE_INTERVAL'}
+elevDimEnabled		{'true','false'}
+elevationPresentationMode
+			{'LIST, CONTINUOUS_INTERVAL, DISCRETE_INTERVAL'}
+styles			{'...'}
+datastorePropertiesPath	{'config/datastore.properties'}
+timeRegex		{'[0-9]{8}T[0-9]{9}Z(\?!.\*[0-9]{8}T[0-9]{9}Z.\*)'}
+elevationRegex		{'<![CDATA[(?<=_)(\\d{4}\\.\\d{3})(?=_)]]>'}
+
+================	GeoTiff retile (create)
+
+serviceID		GeotiffRetilerService
+
+failIgnored		false (if some failure happens ignore it and go ahead with the next file)
+
+forceToBigTiff		{'true','false'}
+tileH			{'256','512',...}
+tileW			{'256','512',...}
+
+================	GeoTiff overview (update)
+
+serviceID		GeotiffOverviewsEmbedderService
+
+failIgnored		false (if some failure happens ignore it and go ahead with the next file)
+
+downsampleStep		{'2','4',...}
+scaleAlgorithm		{'Average','Nearest',...}
+numSteps		{'8','15',...}
+tileH			{'256','512',...}
+tileW			{'256','512',...}
+
+================	Metadata to GeoNetwork
+
+serviceID		GeonetworkGeneratorService
+
+geonetworkServiceURL	{'http://localhost:8080/geonetwork'}
+loginUsername		{'admin'}
+loginPassword		{'admin'}
+onlyMetadataInput	{'true','false'}
+group			{'1'}
+category		{'_none_'}
+styleSheet		{'_none_'}
+validate		{'false'}
+
+================	Scripting Action
+
+serviceID		ScriptingService
+
+language		{'groovy'}
+scriptFile		{'G:/tmp/TestAction.groovy'} (Can be relative to the working dir or absolute)
+properties		{'key0=content0;key1=data1;intVal=500'}
+
+================	Task executor Action
+
+serviceID		TaskExecutorService
+
+errorFile		{'gdaloperationsworkingdir/gdalretile/config/errorlog.txt'}
+timeOut			{'1200000'} (milliseconds)
+executable		{'D:\work\Programs\FWTools2.3.0\python\python.exe'}
+variables		{'GDAL_DATA=C:/Python26/DLLs/gdalwin32-1.6/data;
+			    PATH=D:\work\Programs\FWTools2.3.0\bin;D:\work\Programs\FWTools2.3.0\python;
+			    PYTHONPATH=D:\work\Programs\FWTools2.3.0\pymod'}
+xsl			{'gdaloperationsworkingdir/gdalretile/config/gdalretile.xsl'}
+defaultScript		{'gdaloperationsworkingdir/gdalcontour/config/gdalcontour.xml'}
+outputName		{'*.tif'}
+
+================	
+================

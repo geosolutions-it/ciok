@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<GdalAddo>
+    <r>nearest</r>
+    <filename>${event[0].PARENT}/${event[0].FILENAME}_out.${event[0].EXTENSION}</filename>
+    <levels>2 4 8 16 32</levels>
+</GdalAddo>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowConfiguration>
+	<id>techcdr_flow_tiff</id>
+	<description>Flow to run gdaltranslate gdaladdo and compressions operations</description>
+	<name>techcdr_flow_tiff</name>
+	
+	<corePoolSize>5</corePoolSize>
+	<maximumPoolSize>10</maximumPoolSize>
+	<keepAliveTime>3600</keepAliveTime> <!--seconds-->
+	<workQueueSize>100</workQueueSize>
+	
+	<autorun>true</autorun>
+	
+	<!--<overrideConfigDir>C:\Users\Notarnicola\work\code\java\ciok2\ciok\trunk\gaez\GEOBATCH_CONFIG_DIR</overrideConfigDir>configuration file may override the configuration dir with an absolute path -->
+	
+	
+	<EventConsumerConfiguration>
+	
+		<id>id</id>
+		
+		<performBackup>false</performBackup>
+		
+		<ScriptingConfiguration>
+			<id>ScriptingService</id>
+			<description>GAEZ Groovy Script</description>
+			<name>GAEZ GroovyScript</name>
+			
+			<listenerId>GeoTIFFStatusActionLogger0</listenerId>
+			<listenerId>GeoTIFFActionLogger0</listenerId>
+					
+			<!--<overrideConfigDir>C:\Users\Notarnicola\work\code\java\ciok2\ciok\trunk\gaez\GEOBATCH_CONFIG_DIR</overrideConfigDir>-->
+			<overrideConfigDir>./</overrideConfigDir>
+			
+			<serviceID>ScriptingService</serviceID>
+
+			<language>groovy</language>
+			<!--<scriptFile>C:\Users\Notarnicola\work\code\java\ciok2\ciok\trunk\gaez\GEOBATCH_CONFIG_DIR\techcdr_flow_tiff\config\techcdr_flow_tiff.groovy</scriptFile>-->
+			<scriptFile>config\techcdr_flow_tiff.groovy</scriptFile>
+			<properties>	  
+				  <!-- Where to put output data -->
+				  <entry>
+				    <string>outputDirName</string>
+				    <!--string>/opt/output_tiff/</string-->
+				    <string>C:\Users\Notarnicola\work\code\java\ciok2\ciok\trunk\gaez\GEOBATCH_CONFIG_DIR\techcdr_flow_tiff\out</string>
+				  </entry>
+				  <entry>
+				    <string>backupDirName</string>
+				    <!--string>/opt/output_backup/</string-->
+				    <string>C:\Users\Notarnicola\work\code\java\ciok2\ciok\trunk\gaez\GEOBATCH_CONFIG_DIR\techcdr_flow_tiff\backup</string>
+				  </entry>
+				  
+				  
+				  <!-- xml template for translate-->
+				  <entry>
+				    <string>translateTemplateName</string>
+				    <!--relative to the working dir-->
+				    <!--<string>C:\Users\Notarnicola\work\code\java\ciok2\ciok\trunk\gaez\GEOBATCH_CONFIG_DIR\techcdr_flow_tiff\config\gdal_translate.xml</string>-->
+					<string>config\gdal_translate.xml</string>
+				  </entry>
+				  <entry>
+				    <string>defaultScriptName</string>
+				    <!--<string>C:\Users\Notarnicola\work\code\java\ciok2\ciok\trunk\gaez\GEOBATCH_CONFIG_DIR\techcdr_flow_tiff\config\gdal_translate.xml</string>-->
+					<string>config\gdal_translate.xml</string>
+				  </entry>
+				  <!--entry>
+				    <string>translateErrorFile</string>
+				    <string>techcdr_flow_tiff/config/translate_errorlog.txt</string>
+				  </entry-->
+				  <entry>
+				    <string>translateExecutable</string>
+				    <string>C:\Users\Notarnicola\work\programs\gdalwin32-1.6\bin\gdal_translate</string>
+				  </entry>
+				  <entry>
+				    <string>translateXslName</string>
+				    <!--<string>C:\Users\Notarnicola\work\code\java\ciok2\ciok\trunk\gaez\GEOBATCH_CONFIG_DIR\techcdr_flow_tiff\config\gdal_translate.xsl</string>-->
+					<string>config\gdal_translate.xsl</string>
+				  </entry>
+				  
+				  <!-- xml template for overview -->
+				  <entry>
+				    <string>overviewTemplateName</string>
+				    <!--relative to the working dir-->
+				    <!--<string>C:\Users\Notarnicola\work\code\java\ciok2\ciok\trunk\gaez\GEOBATCH_CONFIG_DIR\techcdr_flow_tiff\config\gdaladdo.xml</string>-->
+					<string>config\gdaladdo.xml</string>
+				  </entry>
+				  <!--entry>
+				    <string>overviewErrorFile</string>
+				    <string>techcdr_flow_tiff/config/overview_errorlog.txt</string>
+				  </entry-->
+				  <entry>
+				    <string>overviewExecutable</string>
+				    <string>C:\Users\Notarnicola\work\programs\gdalwin32-1.6\bin\gdaladdo</string>
+				  </entry>
+				  <entry>
+				    <string>overviewXslName</string>
+				    <!--<string>C:\Users\Notarnicola\work\code\java\ciok2\ciok\trunk\gaez\GEOBATCH_CONFIG_DIR\techcdr_flow_tiff\config\gdaladdo.xsl</string>-->
+					<string>config\gdaladdo.xsl</string>
+				  </entry>
+			</properties>
+		</ScriptingConfiguration>
+		<!--
+		<GeoServerActionConfiguration>
+			<serviceID>GeotiffGeoServerService</serviceID>
+			<id>geotiff</id>
+			<description>Action to ingest GeoTIFF on GeoServer</description>
+			<name>geotiff action</name>
+
+			<listenerId>GeoTIFFStatusActionLogger0</listenerId>
+			<listenerId>GeoTIFFActionLogger0</listenerId>
+			
+			
+			<crs>EPSG:4326</crs>
+			
+			<envelope/>
+			<dataTransferMethod>DIRECT</dataTransferMethod>
+			<geoserverPWD>.:Mascheroni:.</geoserverPWD>
+			<geoserverUID>Euler</geoserverUID>
+			<geoserverURL>http://hqlqatcdrgeo1.hq.un.fao.org:8080/geoserver/</geoserverURL>
+			
+			<defaultNamespace>GEONETWORK</defaultNamespace>
+
+			<wmsPath>/</wmsPath>
+			<defaultStyle>raster</defaultStyle>
+			<styles/>
+		</GeoServerActionConfiguration> -->
+		
+	</EventConsumerConfiguration>
+	<EventGeneratorConfiguration>
+		<wildCard>*.*</wildCard>
+		<watchDirectory>techcdr_flow_tiff/in</watchDirectory>
+		<osType>OS_UNDEFINED</osType>
+		<eventType>FILE_ADDED</eventType>
+
+                  <!-- CRON: every 30 secs -->
+                  <interval>*/10 * * * * ?</interval>
+
+		<id>id</id>
+		<serviceID>fsEventGeneratorService</serviceID>
+		<description>description</description>
+		<name>techcdr_flow_tiff</name>
+	</EventGeneratorConfiguration>
+	
+</FlowConfiguration>

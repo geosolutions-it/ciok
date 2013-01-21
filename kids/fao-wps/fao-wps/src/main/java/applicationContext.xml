@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <!-- FAO specific processes -->
+  <bean id="faoProcessFactory" class="org.geoserver.wps.fao.FAOProcessFactory" />
+  <bean id="cropRasterProcess" class="org.geoserver.wps.fao.CropRaster">
+    <constructor-arg index="0" ref="catalog"></constructor-arg>
+    <constructor-arg index="1" ref="wpsStorageHandler"></constructor-arg>
+  </bean>
+  <bean id="zonalStatsProcess" class="org.geoserver.wps.fao.ZonalStatsProcess" >
+    <constructor-arg index="0" ref="catalog"></constructor-arg>
+  </bean>
+  <bean id="bufferZonalStatsProcess" class="org.geoserver.wps.fao.BufferZonalStatsProcess" >
+    <constructor-arg index="0" ref="catalog"></constructor-arg>
+  </bean>
+
+ <!-- FAO specific PPIO -->
+  <bean id="croppedCoveragesPPIO" class="org.geoserver.wps.ppio.XStreamPPIO">
+    <constructor-arg index="0"
+      value="org.geoserver.wps.fao.CroppedRasters" />
+  </bean>
+  <bean id="zonalStatisticsPPIO" class="org.geoserver.wps.fao.ZonalStasisticsPPIO"/>
+  <bean id="bufferZonalStatisticsPPIO" class="org.geoserver.wps.fao.BufferZonalStasisticsPPIO"/>
+  
+
+</beans>

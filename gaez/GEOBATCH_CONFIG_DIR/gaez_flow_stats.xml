@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowConfiguration>
+	<id>gaez_flow_stats</id>
+	<description>Flow to run gdaladdo operations</description>
+	<name>gaez_flow_stats</name>
+	
+	<corePoolSize>5</corePoolSize>
+	<maximumPoolSize>10</maximumPoolSize>
+	<keepAliveTime>3600</keepAliveTime> <!--seconds-->
+	<workQueueSize>100</workQueueSize>
+	
+	<autorun>true</autorun>
+	
+	<workingDirectory>gaez_flow_stats/</workingDirectory>
+	
+	<EventConsumerConfiguration>
+		<workingDirectory>gaez_flow_stats/</workingDirectory>
+		<performBackup>false</performBackup>
+		
+		<listenerId>GaezCumulator0</listenerId>
+		<listenerId>GaezConsumerLogger0</listenerId>
+		
+		<!--
+		<FileEventRule>
+			<optional>false</optional>
+			<originalOccurrencies>1</originalOccurrencies>
+			<regex>start\.go</regex>
+			<id>r1</id>
+			<description>description</description>
+			<name>test</name>
+		</FileEventRule>
+		-->
+		<ScriptingConfiguration>
+			<id>ScriptingService</id>
+			<description>GAEZ Groovy Script</description>
+			<name>GAEZ GroovyScript</name>
+			
+			<listenerId>GaezActionStatus0</listenerId>
+			<listenerId>GaezActionLogger0</listenerId>
+					
+			<workingDirectory>gaez_flow_stats/</workingDirectory>
+			
+			<serviceID>ScriptingService</serviceID>
+
+			<language>groovy</language>
+			<scriptFile>gaez_flow_stats/config/gaez_stats.groovy</scriptFile>
+			<properties>
+				  <entry>
+				    <string>limitSize</string>
+				    <int>5</int>
+				  </entry>
+				  <entry>
+				    <string>dataStorePropFile</string>
+				    <string>config/jdbc.properties</string>
+				  </entry>
+				  
+				  <entry>
+				    <string>nCopyThreads</string>
+				    <int>5</int>
+				  </entry>
+				  <!-- GDALINFO 2 CSV -->
+				  <entry>
+				    <string>template</string>
+				    <string>config/transform.template</string>
+				  </entry>
+				  <entry>
+				    <string>inputDataDirName</string>
+				    <string>/home/carlo/work/data/gaez_flow_stats/tree/</string>
+				  </entry>
+				  <!-- Where to put output folder(s) -->
+				  <entry>
+				    <string>outputFinalDataDirName</string>
+				    <string>/home/carlo/work/data/gaez_flow_stats/out/</string>
+				  </entry>
+				  
+				  <!-- classify stats -->
+				  <entry>
+				    <string>AreaClassFile_0</string>
+				    <string>config/area0_1.tif;config/area0_2.tif;config/area0_3.tif;config/area0_4.tif</string>
+				  </entry>
+				  <entry>
+				    <string>AreaClassFile_1</string>
+				    <string>config/area1_1.tif;config/area1_2.tif;config/area1_3.tif;config/area1_4.tif</string>
+				  </entry>
+				  <entry>
+				    <string>GAULFile_0</string>
+				    <string>config/gaul0_1.tif;config/gaul0_2.tif;config/gaul0_3.tif;config/gaul0_4.tif</string>
+				  </entry>
+				  <entry>
+				    <string>GAULFile_1</string>
+				    <string>config/gaul1_1.tif;config/gaul1_2.tif;config/gaul1_3.tif;config/gaul1_4.tif</string>
+				  </entry>
+				  <!-- RULE D area ratio -->
+				  <entry>
+				    <string>AreaRatioFile_0</string>
+				    <string>config/area_ratio_lev0_part1.tif;config/area_ratio_lev0_part2.tif;config/area_ratio_lev0_part3.tif;config/area_ratio_lev0_part4.tif</string>
+				  </entry>
+				  <entry>
+				    <string>AreaRatioFile_1</string>
+				    <string>config/area_ratio_lev1_part1.tif;config/area_ratio_lev1_part2.tif;config/area_ratio_lev1_part3.tif;config/area_ratio_lev1_part4.tif</string>
+				  </entry>
+			</properties>
+		</ScriptingConfiguration>
+		<!--
+		<GeoServerActionConfiguration>
+			<serviceID>GeotiffGeoServerService</serviceID>
+			<id>geotiff</id>
+			<description>Action to ingest GeoTIFF on GeoServer</description>
+			<name>geotiff action</name>
+
+			<listenerId>GeoTIFFStatusActionLogger0</listenerId>
+			<listenerId>GeoTIFFActionLogger0</listenerId>
+			
+			<workingDirectory>geotiff</workingDirectory>
+			
+			<crs>EPSG:4326</crs>
+			
+			<envelope/>
+			<dataTransferMethod>EXTERNAL</dataTransferMethod>
+			<geoserverPWD>geoserver</geoserverPWD>
+			<geoserverUID>admin</geoserverUID>
+			<geoserverURL>http://localhost:9999/geoserver</geoserverURL>
+			<defaultNamespace>ciok</defaultNamespace>
+
+			<wmsPath>/</wmsPath>
+			<defaultStyle>raster</defaultStyle>
+			<styles/>
+		</GeoServerActionConfiguration>
+		-->
+		<id>id</id>
+		<description>description</description>
+		<name>test</name>
+	</EventConsumerConfiguration>
+	<EventGeneratorConfiguration>
+		<!--<wildCard>start.go</wildCard>
+		<watchDirectory>gaez_flow/in</watchDirectory>
+		<osType>OS_UNDEFINED</osType>
+		<eventType>FILE_ADDED</eventType>
+		-->
+		<eventType>POLLING_EVENT</eventType>
+                <!-- CRON: every 5 seconds -->
+		<interval>0 0/1 * * * ?</interval>
+
+		<id>id</id>
+		<serviceID>fsEventGeneratorService</serviceID>
+		<description>description</description>
+		<name>test</name>
+	</EventGeneratorConfiguration>
+	
+	
+	<ListenerConfigurations>
+	    <StatusProgressListener>
+		<serviceID>statusListenerService</serviceID>
+		<id>GaezActionStatus0</id>
+	    </StatusProgressListener>
+	    
+	    <LoggingProgressListener>
+		<serviceID>loggingListenerService</serviceID>
+		<id>GaezActionLogger0</id>
+
+		<loggerName>GaezActionLogger0</loggerName>
+	    </LoggingProgressListener>
+
+	    <LoggingProgressListener>
+		<serviceID>loggingListenerService</serviceID>
+		<id>GaezConsumerLogger0</id>
+
+		<loggerName>GaezConsumerLogger0</loggerName>
+	    </LoggingProgressListener>
+
+	    <CumulatingProgressListener>
+		<serviceID>cumulatingListenerService</serviceID>
+		<id>GaezCumulator0</id>
+	    </CumulatingProgressListener>
+	</ListenerConfigurations>
+    
+	
+</FlowConfiguration>

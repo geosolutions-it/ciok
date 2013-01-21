@@ -1,0 +1,21 @@
+Ciao a tutti,
+
+ho appena finito di fare demo a Kiran sul JMX-client1.2, (pare sia andata bene era visibilmente soddisfatto),
+adesso i requisiti sempre per il client sono i seguenti:
+
+1) fare un check se il GS e' su o meno se nn lo e' fare stampa che avvisa di tirare su il GS (come diceva lui: un qualcosa che mi dica a me che sto lanciando il client dopo che hai tirato su il GS puoi pensare di poter comunicare con me, idem per il GB)
+
+2) fare un check se il GB e' su o meno se nn lo e'  fare stempa che avvisa di tirare su il GB,
+
+3) maggior livello di dettaglio nelle stampe degli errori, vuole capire se fallisce la pubblicazione di tiff o shp il perche' e' fallita con un msg che dica perche'  e' fallita la pubblicazione ("ad esempio il workspace sul GS nn esiste" o farlo creare automaticamente o mandare stampa che dice di creare il workspace) 
+
+4) vorrebbe che la configurazione fatta nel jmx.properties inerente questa parte:
+
+# remote JMX server url
+gb_jmx_url=localhost
+# remote JMX server port
+gb_jmx_port=1099
+# bean name which implements ActionManager interface
+JMXServiceManager=JMXServiceManager
+
+non debba essere fatta, vuole non preoccuparsi di dover settare queste properties. 

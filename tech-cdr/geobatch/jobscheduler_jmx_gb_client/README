@@ -1,0 +1,104 @@
+
+Compile GeoBatch including profile 'jmx' and all the profile you may want to include (depending on which action do you want to use).
+-------------------------------------------------------
+# mvn clean install -Pdao.xstream,jmx,...
+-------------------------------------------------------
+
+Run GeoBatch setting JAVA_OPTS as following:
+-------------------------------------------------------
+IP=x.x.x.x
+GEOBATCH_DATA_DIR="/opt/gb_data_dir/"
+JAVA_OPTS="	-Xmx1024m \
+	-DGEOBATCH_DATA_DIR=${GEOBATCH_DATA_DIR} \
+	-Djava.rmi.server.hostname=${IP} \
+	-Dcom.sun.management.jmxremote \
+	-Dcom.sun.management.jmxremote.port=1099 \
+	-Dcom.sun.management.jmxremote.authenticate=false \
+	-Dcom.sun.management.jmxremote.ssl=false"
+-------------------------------------------------------
+
+Set the firewall accepting connection on the 1099 port:
+-------------------------------------------------------
+# iptables -L  												----> list of iptables
+# nano /etc/iptables.test.rules 							----> create a file with a list
+# iptables -A INPUT -i eth0 -p tcp --dport 1099 -j ACCEPT 	----> set the parameter
+# iptables-restore < /etc/iptables.test.rules 				----> activate this new rules
+# iptables -L												----> see the difference
+# iptables-save > /etc/iptables.up.rules					----> save the new rules to the master iptables file	
+# nano /etc/network/if-pre-up.d/iptables					|---> To make sure the iptables rules are started on a reboot we'll create a new file
+#  #!/bin/bash												| 
+   /sbin/iptables-restore < /etc/iptables.up.rules			|---> add this lines
+# chmod +x /etc/network/if-pre-up.d/iptables				|---> The file needs to be executable so change the permissions
+-------------------------------------------------------
+
+Set the java policy to accept connection on that port:
+-------------------------------------------------------
+# nano ${JAVA_HOME}/jre/lib/security/java.policy
+-------------------------------------------------------
+permission java.net.SocketPermission "1099", "listen,accept,resolve"
+-------------------------------------------------------
+
+Compile the jobScheduler client:
+$ svn co https://geosolutions.sourcerepo.com/geosolutions/ciok/trunk/jobscheduler_jmx_gb_client
+$ mvn clean install
+
+Copy the jmx service jar and its dependencies to the jobscheduler java path:
+-------------------------------------------------------
+# cp -vfa target/jobscheduler-jmx-geobatch-1.0-SNAPSHOT.jar ${JOB_SCHEDULER_HOME}/lib/
+# cp ${M2_REPO}/it/geosolutions/geobatch/services/gb-jmx/1.2-SNAPSHOT/gb-jmx-1.2-SNAPSHOT.jar ${JOB_SCHEDULER_HOME}/lib/
+-------------------------------------------------------
+
+Copy the security.policy file into the jobscheduler config dir:
+-------------------------------------------------------
+# cp security.policy /opt/sos-berlin.com/jobscheduler/scheduler/config
+-------------------------------------------------------
+
+Add the security.policy to the JVM configuration into the config/sos.ini file:
+-----------------------sos.ini-------------------------
+[java]
+;                         does not necessarily work, use PATH (Windows) or LD_LIBRARY_PATH (Unix) to locate the Java VM
+;vm                     = /usr/lib/jvm/jdk1.6.0_31_i586/bin/java
+;                         put your Java VM parameters here, eg. increase of memory size
+options                = -Xmx256m -Djava.security.policy=/opt/sos-berlin.com/jobscheduler/scheduler/config/security.policy
+-------------------------------------------------------
+
+Copy the jmx.property file to the config dir:
+-------------------------------------------------------
+# cp jmx.properties /opt/sos-berlin.com/jobscheduler/scheduler/config/
+-------------------------------------------------------
+Edit it to point to the GeoBatch url/port
+
+for example:
+
+# remote JMX server url
+gb_jmx_url=localhost
+# remote JMX server port
+gb_jmx_port=1099
+# bean name which implements ActionManager interface
+JMXActionManager=JMXServiceManager
+-----------------------------------------------------------
+
+Run jobScheduler:
+after installation be shure to point to a 32 bit jvm, to do so, edit the file:
+-------------------------------------------------------
+# nano bin/jobscheduler_environment_variables.sh
+----------- line 18 -----------------------------------
+....
+test -z "$JAVA_HOME" && JAVA_HOME="/usr/lib/jvm/jdk1.6.0_31_i586/jre"
+....
+-------------------------------------------------------
+
+Then run:
+-------------------------------------------------------
+# cd /opt/sos-berlin.com/jobscheduler/scheduler
+# bin/jobscheduler.sh start & tail -f logs/scheduler.log
+-------------------------------------------------------
+
+Now place your job configuration to the jobscheduler hot folder or place it into the config/scheduler.xml;
+
+You'll find some examples:
+geobatch.job.xml (to place into the config/live/ folder)
+geobatch_job.xml (is a complete and very simple scheduler.xml configuration) 
+
+Regards,
+Carlo Cancellieri

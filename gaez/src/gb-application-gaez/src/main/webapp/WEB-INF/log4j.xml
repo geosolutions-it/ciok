@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	threshold="null" debug="false">
+
+	<appender name="rolling" class="org.apache.log4j.RollingFileAppender">
+		<!-- <param name="File" value="${GEOBATCH_LOG}/geobatch.log" /> -->
+		<!-- Geobatch internal logs dir <param name="File" value="${webapp.root}/logs/geobatch.log" 
+			/> -->
+		<!-- Tomcat Default logs dir <param name="File" value="${catalina.base}/logs/geobatch.log" 
+			/> -->
+		<param name="File" value="${catalina.base}/logs/geobatch.log" />
+		<param name="DatePattern" value="yyyy-MM-dd" />
+		<param name="MaxFileSize" value="100MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<param name="threshold" value="debug" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %5p %24C{1}:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- CAMEL -->
+	<logger name="org.apache.camel" additivity="true">
+		<!-- <level value="warning" /> -->
+		<level value="info" /><!-- DEBUG -->
+		<appender-ref ref="rolling" />
+	</logger>
+	<logger name="it.geosolutions.geobatch" additivity="true">
+		<!-- <level value="warning" /> -->
+		<level value="debug" /><!-- DEBUG -->
+		<appender-ref ref="rolling" />
+	</logger>
+
+	<logger name="org.quartz" additivity="true">
+		<level value="info" />
+		<appender-ref ref="rolling" />
+	</logger>
+
+	<logger name="org.hibernate" additivity="true">
+		<level value="info" />
+		<appender-ref ref="rolling" />
+	</logger>
+
+	<!-- SPRING -->
+	<logger name="org.springframework" additivity="true">
+		<level value="info" />
+		<appender-ref ref="rolling" />
+	</logger>
+
+	<!-- JETTY -->
+	<logger name="org.mortbay.jetty" additivity="true">
+		<level value="info" />
+		<appender-ref ref="rolling" />
+	</logger>
+
+	<root>
+		<level value="info" />
+		<appender-ref ref="rolling" />
+	</root>
+
+</log4j:configuration>

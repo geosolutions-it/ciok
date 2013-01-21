@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowConfiguration>
+	<id>ciok_flow</id>
+	<description>Flow to run gdaladdo operations</description>
+	<name>ciok_flow</name>
+	
+	<autorun>true</autorun>
+	
+	<workingDirectory>ciok_flow/</workingDirectory>
+	
+	<EventConsumerConfiguration>
+		<workingDirectory>ciok_flow/</workingDirectory>
+		<performBackup>false</performBackup>
+		
+		<FileEventRule>
+			<optional>false</optional>
+			<originalOccurrencies>1</originalOccurrencies>
+			<regex>.*\.tif*</regex>
+			<id>r1</id>
+			<description>description</description>
+			<name>test</name>
+		</FileEventRule>
+		
+		<ScriptingConfiguration>
+			<id>ScriptingService</id>
+			<description>BRISEIDE Groovy Script</description>
+			<name>BRISEIDE GroovyScript</name>
+			
+			<listenerId>GeoTIFFStatusActionLogger0</listenerId>
+			<listenerId>GeoTIFFActionLogger0</listenerId>
+					
+			<workingDirectory>ciok_flow/</workingDirectory>
+			
+			<serviceID>ScriptingService</serviceID>
+
+			<language>groovy</language>
+			<scriptFile>/home/carlo/work/code/java/CIOCK/GEOBATCH_DATA_DIR/ciok_flow/config/script.groovy</scriptFile>
+			<properties>
+				  <!-- Where to put output folder(s) -->
+				  <entry>
+				    <string>OutputDataDir</string>
+				    <string>/home/carlo/work/code/java/CIOCK/GEOBATCH_DATA_DIR/ciok_flow/</string>
+				  </entry>
+				  
+				  <!-- xml template for overview -->
+				  <entry>
+				    <string>OverviewTemplateInput</string>
+				    <!--relative to the working dir-->
+				    <string>config/gdaladdo.xml</string>
+				  </entry>
+				  
+				  <!-- xml template for translate-->
+				  <entry>
+				    <string>TranslateTemplateInput</string>
+				    <!--relative to the working dir-->
+				    <string>config/gdal_translate.xml</string>
+				  </entry>
+				  <entry>
+				    <string>DefaultScript</string>
+				    <string>ciok_flow/config/gdal_translate.xml</string>
+				  </entry>
+				  <entry>
+				    <string>TranslateErrorFile</string>
+				    <string>ciok_flow/config/translate_errorlog.txt</string>
+				  </entry>
+				  <entry>
+				    <string>TranslateExecutable</string>
+				    <string>/usr/bin/gdal_translate</string>
+				  </entry>
+				  <entry>
+				    <string>TranslateXsl</string>
+				    <string>ciok_flow/config/gdal_translate.xsl</string>
+				  </entry>
+				  
+				  
+				  <entry>
+				    <string>OverviewErrorFile</string>
+				    <string>ciok_flow/config/overview_errorlog.txt</string>
+				  </entry>
+				  <entry>
+				    <string>OverviewExecutable</string>
+				    <string>/usr/bin/gdaladdo</string>
+				  </entry>
+				  <entry>
+				    <string>OverviewXsl</string>
+				    <string>ciok_flow/config/gdaladdo.xsl</string>
+				  </entry>
+				  
+				 
+				  </properties>
+		</ScriptingConfiguration>
+		<GeoServerActionConfiguration>
+			<serviceID>GeotiffGeoServerService</serviceID>
+			<id>geotiff</id>
+			<description>Action to ingest GeoTIFF on GeoServer</description>
+			<name>geotiff action</name>
+
+			<listenerId>GeoTIFFStatusActionLogger0</listenerId>
+			<listenerId>GeoTIFFActionLogger0</listenerId>
+			
+			<workingDirectory>geotiff</workingDirectory>
+			
+			<crs>EPSG:4326</crs>
+			
+			<envelope/>
+			<dataTransferMethod>EXTERNAL</dataTransferMethod>
+			<geoserverPWD>geoserver</geoserverPWD>
+			<geoserverUID>admin</geoserverUID>
+			<geoserverURL>http://localhost:9999/geoserver</geoserverURL>
+			<defaultNamespace>ciok</defaultNamespace>
+
+			<wmsPath>/</wmsPath>
+			<defaultStyle>raster</defaultStyle>
+			<styles/>
+		</GeoServerActionConfiguration>
+		
+		<id>id</id>
+		<description>description</description>
+		<name>test</name>
+	</EventConsumerConfiguration>
+	<EventGeneratorConfiguration>
+		<wildCard>*.tif*</wildCard>
+		<watchDirectory>ciok_flow/in</watchDirectory>
+		<osType>OS_UNDEFINED</osType>
+		<eventType>FILE_ADDED</eventType>
+		<id>id</id>
+        <serviceID>fsEventGeneratorService</serviceID>
+		<description>description</description>
+		<name>test</name>
+	</EventGeneratorConfiguration>
+	
+</FlowConfiguration>

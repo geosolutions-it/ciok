@@ -1,0 +1,3 @@
+Warning 1: TIFFFetchNormalTag:ASCII value for tag "GDALNoDataValue" does not end in null byte
+Warning 1: TIFFFetchNormalTag:ASCII value for tag "GDALNoDataValue" does not end in null byte
+Warning 1: GeoTIFF tags apparently corrupt, they are being ignored.

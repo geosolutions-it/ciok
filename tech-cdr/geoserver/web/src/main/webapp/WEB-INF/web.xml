@@ -59,6 +59,60 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:/applicationContext.xml classpath*:/applicationSecurityContext.xml</param-value>
     </context-param>
+
+<!-- ======================  FAO  ========================= -->
+    <!-- FAO GeoServer context parameters -->
+    <context-param>
+       <param-name>FAO_ESB_BASE_URL</param-name>
+       <param-value>http://qa-data.fao.org/statistics/named-query</param-value>
+    </context-param>
+
+    <context-param>
+      <param-name>FAO_CACHE_LOCATION</param-name>
+      <param-value>/data/geoData/store/</param-value>
+    </context-param>
+
+    <context-param>
+      <param-name>FAO_CACHE_UNLOCK_WAITING_TIMEOUT</param-name>
+      <param-value>20</param-value>
+    </context-param>
+
+    <context-param>
+      <param-name>FAO_CACHE_DETECT_DEADLOCKS</param-name>
+      <param-value>true</param-value>
+    </context-param>
+
+    <context-param>
+      <param-name>FAO_CACHE_DEADLOCKS_TIMEOUT</param-name>
+      <param-value>60</param-value>
+    </context-param>
+
+    <!-- FILTERS -->
+    <filter>
+        <filter-name>cross-origin</filter-name>
+        <filter-class>org.fao.techcdr.filter.CrossOriginFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>FAO GetMap Filter</filter-name>
+        <filter-class>org.fao.data.map.geoserver.filter.getmap.GetMapFilter</filter-class>
+
+        <init-param>
+            <param-name>client-default-maxage</param-name>
+            <param-value>1800</param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>FAO DynamicStyle Filter</filter-name>
+        <filter-class>org.fao.data.map.geoserver.filter.dynamicstyle.DynamicStyleFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>FAO ClearCache Filter</filter-name>
+        <filter-class>org.fao.data.map.geoserver.filter.cache.ClearCacheFilter</filter-class>
+    </filter>
+<!-- ======================  FAO  ========================= -->
     
     <filter>
      <filter-name>SessionDebugger</filter-name>
@@ -97,6 +151,13 @@
          <param-value>text/.*,.*xml.*,application/json,application/x-javascript</param-value>
      </init-param>
    </filter>
+
+<!-- ======================  FAO  ========================= -->
+    <filter>
+        <filter-name>FAO GetFeatureInfo Filter</filter-name>
+        <filter-class>org.fao.data.map.geoserver.filter.getfeature.GetFeatureInfoFilter</filter-class>
+    </filter>
+<!-- ======================  FAO  ========================= -->
 
    <filter>
      <filter-name>Request Logging Filter</filter-name>
@@ -154,6 +215,28 @@
      -->
    </filter>
 
+<!-- ======================  FAO  ========================= -->
+   <filter-mapping>
+      <filter-name>cross-origin</filter-name>
+      <url-pattern>/wfs</url-pattern>
+   </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>FAO GetMap Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>FAO DynamicStyle Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>FAO ClearCache Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+<!-- ======================  FAO  ========================= -->
+
     <filter-mapping>
       <filter-name>SessionDebugger</filter-name>
       <url-pattern>/*</url-pattern>
@@ -163,6 +246,13 @@
       <filter-name>GZIP Compression Filter</filter-name>
       <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+<!-- ======================  FAO  ========================= -->
+    <filter-mapping>
+        <filter-name>FAO GetFeatureInfo Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+<!-- ======================  FAO  ========================= -->
     
     <filter-mapping>
       <filter-name>Request Logging Filter</filter-name>
@@ -216,7 +306,14 @@
     <listener>
       <listener-class>org.geoserver.platform.GeoServerHttpSessionListenerProxy</listener-class>
     </listener>
-    
+
+<!-- ======================  FAO  ========================= -->
+    <!-- FAO GeoServer Context Listener -->
+    <listener>
+        <listener-class>org.fao.data.map.geoserver.listener.FaoGeoContextListener</listener-class>
+    </listener>
+<!-- ======================  FAO  ========================= -->
+
     <!-- spring dispatcher servlet, dispatches all incoming requests -->
     <servlet>
       <servlet-name>dispatcher</servlet-name>
@@ -242,6 +339,71 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
-    
+
+<!-- ======================  FAO  ========================= -->
+    <!-- RESOURCES -->
+    <resource-ref>
+      <description>PostgreSQL COUNTRYPROFILES Datasource</description>
+      <res-ref-name>jdbc/ldb_countryprof</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-ref>
+      <description>PostgreSQL COMMON GAUL Datasource</description>
+      <res-ref-name>jdbc/common_gaul</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-ref>
+      <description>PostgreSQL GAEZ Datasource</description>
+      <res-ref-name>jdbc/gaez</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-ref>
+      <description>PostgreSQL GAEZAPP Datasource</description>
+      <res-ref-name>jdbc/gaezapp</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-ref>
+      <description>PostgreSQL AQUASTAT Datasource</description>
+      <res-ref-name>jdbc/aquastat</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-ref>
+      <description>PostgreSQL FSATMIS Datasource</description>
+      <res-ref-name>jdbc/fsatmis</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-ref>
+      <description>PostgreSQL FAODATA-FAOSTAT Datasource</description>
+      <res-ref-name>jdbc/faodata_faostat</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-ref>
+      <description>PostgreSQL FAODATA-FISHERIES Datasource</description>
+      <res-ref-name>jdbc/faodata_fisheries</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-ref>
+      <description>PostgreSQL HUNGERMAP Datasource</description>
+      <res-ref-name>jdbc/hungermap</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+<!-- ======================  FAO  ========================= -->
+
 </web-app>
- 

@@ -52,6 +52,16 @@
 		<!-- fao extensions -->
 		<dependency>
 			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>FaoGeoCrossDomain</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>FaoGeoGetFeatureInfoFilter</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
 			<artifactId>FaoGeoContextListener</artifactId>
 		</dependency>
 

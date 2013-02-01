@@ -97,6 +97,13 @@
 		
 		
 		<!-- fao extensions -->
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>FaoGeoContextListener</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.fao.data.map.geoserver.libs</groupId>
 			<artifactId>FaoGeoClearCacheFilter</artifactId>

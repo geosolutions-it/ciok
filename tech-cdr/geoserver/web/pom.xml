@@ -50,7 +50,11 @@
 		</dependency>
 		
 		<!-- fao extensions -->
-		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>FaoGeoContextListener</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.fao.data.geoserver.json</groupId>
 			<artifactId>getLegendGraphic</artifactId>

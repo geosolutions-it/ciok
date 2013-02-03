@@ -73,6 +73,11 @@
 		
 		<!-- fao extensions -->
 		<dependency>
+			<groupId>org.fao.data.geoserver.json</groupId>
+			<artifactId>getLegendGraphic</artifactId>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.fao.data.map.geoserver.libs</groupId>
 			<artifactId>FaoGeoCrossDomain</artifactId>
 		</dependency>

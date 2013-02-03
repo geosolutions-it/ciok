@@ -382,6 +382,10 @@ public Map execute(Map argsMap) throws Exception {
 				FileUtils.deleteQuietly(imageFile)
 				imageFile=new File(overviewRasterFile.getParent(),FilenameUtils.getBaseName(imageFileName)+".tif");
 				FileUtils.moveFile(overviewRasterFile,imageFile);
+	// if overwrite == true remove the existing file
+				if (overwrite){
+					FileUtils.deleteQuietly(new File(tiffOutputFinalDataDir,imageFile.getName()));
+				}
 				AsynchMove moveTiff =new AsynchMove(map, imageFile, tiffOutputFinalDataDir,es);
 				map.put("file_name_tif", imageFile.getName());
 				map.put("file_path_tif", map.get("file_path_rst"));
@@ -389,16 +393,6 @@ public Map execute(Map argsMap) throws Exception {
 
 	// SET STATUS OK
 				
-
-			} catch (IOException ioe) {
-				final String message="problem " +ioe.getLocalizedMessage();
-				if (LOGGER.isErrorEnabled()) {
-					LOGGER.error(message);
-				}
-				map.put("status_msg",message);
-				map.put("status_code","TKO"); // throw e;
-				continue;
-			
 			} catch (Throwable t){
 				final String message="problem " +t.getLocalizedMessage();
 				if (LOGGER.isErrorEnabled()) {
@@ -420,7 +414,7 @@ public Map execute(Map argsMap) throws Exception {
 				map.put("status_msg",null);
 			}
 			else {
-				final String message="problem in moving file: "+ futureMove.getSource() +" to destination: "+futureMove.getDest();
+				final String message="Error moving file: "+ futureMove.getSource() +" to destination: "+futureMove.getDest();
 				if (LOGGER.isErrorEnabled()) {
 					LOGGER.error(message);
 				}

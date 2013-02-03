@@ -64,6 +64,12 @@
 				    <string>/data/geobatch/gaez</string>
 				  </entry>
 				  
+				  <!-- overwrite existing data (tiff) -->
+				  <entry>
+				    <string>overwrite</string>
+				    <boolean>true</boolean>
+				  </entry>
+				  
 				  <!-- Where to put output folder(s) -->
 				  
 				  <entry>

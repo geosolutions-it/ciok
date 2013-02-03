@@ -41,6 +41,7 @@
 	    <webappSourceDirectory>${basedir}/src/main/webapp</webappSourceDirectory>
 	    <geoserver.version>2.2-SNAPSHOT</geoserver.version>
 	    <fao.filter.version>0.0.2-SNAPSHOT</fao.filter.version>
+	    <faodata.esb.server.http.host>http://localhost</faodata.esb.server.http.host>
     </properties>
 
 

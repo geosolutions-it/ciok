@@ -200,6 +200,7 @@
 				<configuration>
 					<warName>geoserver</warName>
 					<webappDirectory>${project.build.directory}/geoserver</webappDirectory>
+					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
 				</configuration>
 				<executions>
 					<execution>

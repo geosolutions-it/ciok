@@ -64,9 +64,24 @@
     <!-- FAO GeoServer context parameters -->
     <context-param>
        <param-name>FAO_ESB_BASE_URL</param-name>
-       <param-value>http://qa-data.fao.org/statistics/named-query</param-value>
+       <param-value>${faodata.esb.server.http.host}</param-value>
     </context-param>
 
+    <context-param>
+      <param-name>FAO_SAIKU_USERNAME</param-name>
+      <param-value>admin</param-value>
+    </context-param>
+
+    <context-param>
+      <param-name>FAO_SAIKU_PASSWORD</param-name>
+      <param-value>a1xapjO7Eqj34uIYErfEAw==</param-value>
+    </context-param>
+    
+    <context-param>
+      <param-name>FAO_FREEMARKER_TEMPLATES_FOLDER</param-name>
+      <param-value>/data/geoData/templates</param-value>
+    </context-param>
+    
     <context-param>
       <param-name>FAO_CACHE_LOCATION</param-name>
       <param-value>/data/geoData/store/</param-value>
@@ -218,7 +233,7 @@
 <!-- ======================  FAO  ========================= -->
    <filter-mapping>
       <filter-name>cross-origin</filter-name>
-      <url-pattern>/wfs</url-pattern>
+      <url-pattern>/*</url-pattern>
    </filter-mapping>
 
     <filter-mapping>

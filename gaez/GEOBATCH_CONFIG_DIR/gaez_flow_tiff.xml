@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowConfiguration>
+	<id>gaez_flow_tiff</id>
+	<description>Flow to process GAEZ rasters</description>
+	<name>gaez_flow_tiff</name>
+	
+	<corePoolSize>5</corePoolSize>
+	<maximumPoolSize>10</maximumPoolSize>
+	<keepAliveTime>3600</keepAliveTime> <!--seconds-->
+	<workQueueSize>100</workQueueSize>
+	
+	<autorun>false</autorun>
+	
+	<EventGeneratorConfiguration>
+		<eventType>POLLING_EVENT</eventType>
+		<!-- CRON: every minute at sec 0 -->
+		<interval>*/15 * * * * ?</interval>
+		<id>id</id>
+		<serviceID>fsEventGeneratorService</serviceID>
+	</EventGeneratorConfiguration>
+	
+	<EventConsumerConfiguration>
+	  
+		<id>id</id>
+		<performBackup>false</performBackup>
+		
+		<listenerId>cumulating</listenerId>
+		
+		<ScriptingConfiguration>
+			<id>ScriptingService</id>
+			<description>GAEZ Groovy Script</description>
+			<name>GAEZ_GroovyScript</name>
+			
+			
+			<listenerId>logging</listenerId>
+			<listenerId>status</listenerId>
+					
+			<overrideConfigDir>./</overrideConfigDir>
+			
+			<serviceID>ScriptingService</serviceID>
+
+			<language>groovy</language>
+			<scriptFile>config/gaez_tiff.groovy</scriptFile>
+			<properties>
+				  <entry>
+				    <string>nExecutorThreads</string>
+				    <int>5</int>
+				  </entry>
+				  <entry>
+				    <string>limitSize</string>
+				    <int>25</int>
+				  </entry>
+				  <entry>
+				    <string>dataStorePropFileName</string>
+				    <string>config/jdbc.properties</string>
+				  </entry>
+				  <entry>
+				    <string>template</string>
+				    <string>config/transform.template</string>
+				  </entry>
+				  <!-- Source dir where input files are -->
+				  <entry>
+				    <string>inputDataDirName</string>
+				    <string>/data/geobatch/gaez</string>
+				  </entry>
+				  
+				  <!-- overwrite existing data (tiff) -->
+				  <entry>
+				    <string>overwrite</string>
+				    <boolean>true</boolean>
+				  </entry>
+				  
+				  <!-- Where to put output folder(s) -->
+				  
+				  <entry>
+				  <!--here the outputDirectory where the idrisi files are copied from an external storage -->	
+				    <string>outputDataDirName</string>
+				    <string>/data/geobatch/bkp</string>
+				  </entry>
+				  <entry>
+				  <!--here the outputDirectory for tiff files --> 	
+				    <string>outputFinalDataDirName</string>
+				    <string>/data/geobatch/gaez/finalOuptutDir5/</string>
+				  </entry>
+				  
+				  
+				  <!-- xml template for translate-->
+				  <entry>
+				    <string>translateTemplateName</string>
+				    <!--relative to the working dir-->
+				    <string>config/gdal_translate.xml</string>
+				  </entry>
+				  <entry>
+				    <string>translateExecutable</string>
+				    <string>/data/geobatch/FWTools-linux-x86_64-3.1.0/bin_safe/gdal_translate</string>
+				  </entry>
+				  <entry>
+				    <string>defaultScriptName</string>
+				    <string>config/gdal_translate.xml</string>
+				  </entry>
+				  <entry>
+				    <string>translateXslName</string>
+				    <string>config/gdal_translate.xsl</string>
+				  </entry>
+				  <entry>
+				    <string>translateErrorFile</string>
+				    <string>translate_errorlog.txt</string>
+				  </entry>
+				  
+				  <!-- xml template for overview -->
+				  <entry>
+				    <string>overviewTemplateName</string>
+				    <!--relative to the working dir-->
+				    <string>config/gdaladdo.xml</string>
+				  </entry>
+				  <entry>
+				    <string>overviewXslName</string>
+				    <string>config/gdaladdo.xsl</string>
+				  </entry>
+				  <!--entry>
+				    <string>OverviewErrorFile</string>
+				    <string>gaez_flow_tiff/config/overview_errorlog.txt</string>
+				  </entry-->
+				  <entry>
+				    <string>overviewExecutable</string>
+				    <string>/data/geobatch/FWTools-linux-x86_64-3.1.0/bin_safe/gdaladdo</string>
+				  </entry>
+				  
+			</properties>
+		</ScriptingConfiguration>
+		
+	</EventConsumerConfiguration>
+	
+	<ListenerConfigurations>
+            <StatusProgressListener>
+                <serviceID>statusListenerService</serviceID>
+                <id>status</id>
+            </StatusProgressListener>
+
+            <LoggingProgressListener>
+                <serviceID>loggingListenerService</serviceID>
+                <id>logging</id>
+                <loggerName>loggingListener</loggerName>
+            </LoggingProgressListener>
+
+            <CumulatingProgressListener>
+                <serviceID>cumulatingListenerService</serviceID>
+                <id>cumulating</id>
+            </CumulatingProgressListener>
+	</ListenerConfigurations>
+
+</FlowConfiguration>

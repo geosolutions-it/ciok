@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowConfiguration>
+	<id>gaez_flow</id>
+	<description>Flow to run gdaladdo operations</description>
+	<name>gaez_flow</name>
+	
+	<corePoolSize>5</corePoolSize>
+	<maximumPoolSize>10</maximumPoolSize>
+	<keepAliveTime>3600</keepAliveTime> <!--seconds-->
+	<workQueueSize>100</workQueueSize>
+	
+	<autorun>false</autorun>
+	
+	<workingDirectory>gaez_flow/</workingDirectory>
+	
+	<EventConsumerConfiguration>
+		<workingDirectory>gaez_flow/</workingDirectory>
+		<performBackup>false</performBackup>
+		
+		<listenerId>GaezCumulator0</listenerId>
+		<listenerId>GaezConsumerLogger0</listenerId>
+		
+		<!--
+		<FileEventRule>
+			<optional>false</optional>
+			<originalOccurrencies>1</originalOccurrencies>
+			<regex>start\.go</regex>
+			<id>r1</id>
+			<description>description</description>
+			<name>test</name>
+		</FileEventRule>
+		-->
+		<ScriptingConfiguration>
+			<id>ScriptingService</id>
+			<description>GAEZ Groovy Script</description>
+			<name>GAEZ GroovyScript</name>
+			
+			<listenerId>GaezActionStatus0</listenerId>
+			<listenerId>GaezActionLogger0</listenerId>
+					
+			<workingDirectory>gaez_flow/</workingDirectory>
+			
+			<serviceID>ScriptingService</serviceID>
+
+			<language>groovy</language>
+			<scriptFile>/home/carlo/work/project/ciok/trunk/gaez/GEOBATCH_DATA_DIR/gaez_flow/config/gaez.groovy</scriptFile>
+			<properties>
+				  <entry>
+				    <string>LimitSize</string>
+				    <int>10</int>
+				  </entry>
+				  <entry>
+				    <string>DataStorePropFile</string>
+				    <string>config/jdbc.properties</string>
+				  </entry>
+				  <!--
+				  <entry>
+				    <string>Table</string>
+				    <string>rst_to_tif</string>
+				  </entry>
+				  <entry>
+				    <string>Store</string>
+				    <string>gaez</string>
+				  </entry>
+				  -->
+				  <!-- GDALINFO 2 CSV -->
+				  <entry>
+				    <string>Template</string>
+				    <string>config/transform.template</string>
+				  </entry>
+				  
+				  <!-- Where to put output folder(s) -->
+				  <entry>
+				    <string>OutputDataDir</string>
+				    <string>/media/bigshare/data/ciok/gaez/test/</string>
+				  </entry>
+				  
+				  <!--<entry>
+				    <string>RdcFileName</string>
+				    <string>config/et0_.rdc</string>
+				  </entry>
+				  -->
+				  
+				  <!-- xml template for translate-->
+				  <entry>
+				    <string>TranslateTemplateInput</string>
+				    <!--relative to the working dir-->
+				    <string>config/gdal_translate.xml</string>
+				  </entry>
+				  <entry>
+				    <string>DefaultScript</string>
+				    <string>gaez_flow/config/gdal_translate.xml</string>
+				  </entry>
+				  <entry>
+				    <string>TranslateErrorFile</string>
+				    <string>gaez_flow/config/translate_errorlog.txt</string>
+				  </entry>
+				  <entry>
+				    <string>TranslateExecutable</string>
+				    <string>/usr/bin/gdal_translate</string>
+				  </entry>
+				  <entry>
+				    <string>TranslateXsl</string>
+				    <string>gaez_flow/config/gdal_translate.xsl</string>
+				  </entry>
+				  
+				  <!-- xml template for overview -->
+				  <entry>
+				    <string>OverviewTemplateInput</string>
+				    <!--relative to the working dir-->
+				    <string>config/gdaladdo.xml</string>
+				  </entry>
+				  <entry>
+				    <string>OverviewErrorFile</string>
+				    <string>gaez_flow/config/overview_errorlog.txt</string>
+				  </entry>
+				  <entry>
+				    <string>OverviewExecutable</string>
+				    <string>/usr/bin/gdaladdo</string>
+				  </entry>
+				  <entry>
+				    <string>OverviewXsl</string>
+				    <string>gaez_flow/config/gdaladdo.xsl</string>
+				  </entry>
+				  
+				  
+				  <!-- classify stats -->
+				  <entry>
+				    <string>AreaClassFile</string>
+				    <string>config/area.tif</string>
+				  </entry>
+				  <entry>
+				    <string>GAULFile</string>
+				    <string>config/gaul0.tif</string>
+				  </entry>
+				 
+				  </properties>
+		</ScriptingConfiguration>
+		<!--
+		<GeoServerActionConfiguration>
+			<serviceID>GeotiffGeoServerService</serviceID>
+			<id>geotiff</id>
+			<description>Action to ingest GeoTIFF on GeoServer</description>
+			<name>geotiff action</name>
+
+			<listenerId>GeoTIFFStatusActionLogger0</listenerId>
+			<listenerId>GeoTIFFActionLogger0</listenerId>
+			
+			<workingDirectory>geotiff</workingDirectory>
+			
+			<crs>EPSG:4326</crs>
+			
+			<envelope/>
+			<dataTransferMethod>EXTERNAL</dataTransferMethod>
+			<geoserverPWD>geoserver</geoserverPWD>
+			<geoserverUID>admin</geoserverUID>
+			<geoserverURL>http://localhost:9999/geoserver</geoserverURL>
+			<defaultNamespace>ciok</defaultNamespace>
+
+			<wmsPath>/</wmsPath>
+			<defaultStyle>raster</defaultStyle>
+			<styles/>
+		</GeoServerActionConfiguration>
+		-->
+		<id>id</id>
+		<description>description</description>
+		<name>test</name>
+	</EventConsumerConfiguration>
+	<EventGeneratorConfiguration>
+		<!--<wildCard>start.go</wildCard>
+		<watchDirectory>gaez_flow/in</watchDirectory>
+		<osType>OS_UNDEFINED</osType>
+		<eventType>FILE_ADDED</eventType>
+		-->
+		<eventType>POLLING_EVENT</eventType>
+                <!-- CRON: every 5 seconds -->
+		<interval>*/5 * * * * ?</interval>
+
+		<id>id</id>
+		<serviceID>fsEventGeneratorService</serviceID>
+		<description>description</description>
+		<name>test</name>
+	</EventGeneratorConfiguration>
+	
+	
+	<ListenerConfigurations>
+	    <StatusProgressListener>
+		<serviceID>statusListenerService</serviceID>
+		<id>GaezActionStatus0</id>
+	    </StatusProgressListener>
+	    
+	    <LoggingProgressListener>
+		<serviceID>loggingListenerService</serviceID>
+		<id>GaezActionLogger0</id>
+
+		<loggerName>GaezActionLogger0</loggerName>
+	    </LoggingProgressListener>
+
+	    <LoggingProgressListener>
+		<serviceID>loggingListenerService</serviceID>
+		<id>GaezConsumerLogger0</id>
+
+		<loggerName>GaezConsumerLogger0</loggerName>
+	    </LoggingProgressListener>
+
+	    <CumulatingProgressListener>
+		<serviceID>cumulatingListenerService</serviceID>
+		<id>GaezCumulator0</id>
+	    </CumulatingProgressListener>
+	</ListenerConfigurations>
+    
+	
+</FlowConfiguration>

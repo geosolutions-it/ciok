@@ -1,0 +1,7 @@
+<org.geoserver.security.config.ExceptionTranslationFilterConfig>
+  <id>6cb8a721:13c96985697:-7ff1</id>
+  <name>guiException</name>
+  <className>org.geoserver.security.filter.GeoServerExceptionTranslationFilter</className>
+  <authenticationFilterName>form</authenticationFilterName>
+  <accessDeniedErrorPage>/accessDenied.jsp</accessDeniedErrorPage>
+</org.geoserver.security.config.ExceptionTranslationFilterConfig>

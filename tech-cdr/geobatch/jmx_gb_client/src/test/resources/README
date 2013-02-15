@@ -1,0 +1,8 @@
+TESTS:
+
+To perform tests on a running geobatch instance use:
+
+$ existgb="true" mvn clean install -o
+
+Be shure to modify src/test/resources/jmx.properties file accordingly
+

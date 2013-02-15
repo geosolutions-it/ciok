@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- GetLegendGraphic output JSONP -->
+	<bean id="wmsJSONPLegendOutputFormat" class="org.geoserver.wms.legendgraphic.JSONLegendOutputFormat">
+		<constructor-arg ref="wms" />
+		<constructor-arg value="text/javascript" />
+	</bean>
+	<!-- GetLegendGraphic JSONP filter -->
+	<bean id="wmsJSONPLegendOutputFormatEF" class="org.geoserver.wfs.json.JSONPExtensionFilter">
+		<constructor-arg value="wmsJSONPLegendOutputFormat" />
+	</bean>
+	<!-- GetLegendGraphic JSON -->
+	<bean id="wmsJSONLegendOutputFormat" class="org.geoserver.wms.legendgraphic.JSONLegendOutputFormat">
+		<constructor-arg ref="wms" />
+		<constructor-arg value="application/json" />
+	</bean>
+</beans>

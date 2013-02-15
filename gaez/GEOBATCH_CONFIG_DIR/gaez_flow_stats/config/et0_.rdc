@@ -1,0 +1,24 @@
+file format : IDRISI Raster A.1
+file title  : Annual potential evapotranspiration (mm)
+data type   : integer
+file type   : binary
+columns     : 4320
+rows        : 2160
+ref. system : latlong
+ref. units  : deg
+unit dist.  : 1.0000000
+min. X      : -180.0000000
+max. X      : 180.0000000
+min. Y      : -90.0000000
+max. Y      : 90.0000000
+pos'n error : unknown
+resolution  : 0.08333333
+min. value  : 0
+max. value  : 2500
+display min : 0
+display max : 2500
+value units : unknown
+value error : unknown
+flag value  : -9
+flag def'n  : background
+legend cats : 0

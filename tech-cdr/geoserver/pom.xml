@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- =======================================================================    
+        Maven Project Configuration File                                        
+                                                                                
+        GeoSolutions GeoServer for CIOK Project                                                    
+            http://data.fao.org
+                                                                                            
+        Version: $Id: pom.xml 329 2013-01-21 16:20:09Z ccancellieri $
+     ======================================================================= -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+      <groupId>org.geoserver</groupId>
+      <artifactId>geoserver</artifactId>
+      <version>2.2-SNAPSHOT</version>
+    </parent>
+    
+  <!-- =========================================================== -->
+  <!--     Module Description                                      -->
+  <!-- =========================================================== -->
+    <groupId>org.fao.data</groupId>
+    <artifactId>tech-cdr-geoserver</artifactId>
+    <version>tech-cdr-2.2-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>tech-cdr-geoserver</name>
+
+    <description>Geoserver for data.fao.org</description>
+
+    <licenses>
+        <license>
+            <name>Lesser General Public License (LGPL)</name>
+            <url>http://www.gnu.org/copyleft/lesser.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+	    <configDirectory>${basedir}</configDirectory>
+	    <webappSourceDirectory>${basedir}/src/main/webapp</webappSourceDirectory>
+	    <geoserver.version>2.2-SNAPSHOT</geoserver.version>
+	    <fao.filter.version>0.0.2-SNAPSHOT</fao.filter.version>
+	    <faodata.esb.server.http.host>http://localhost</faodata.esb.server.http.host>
+    </properties>
+
+
+    
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/geosolutions-it/ciok/issues</url>
+    </issueManagement>
+
+    <scm>
+	<url>https://github.com/geosolutions-it/ciok/tech-cdr/</url>
+        <connection>scm:git:git@github.com:geosolutions-it/ciok.git</connection>
+    </scm>
+
+    <distributionManagement>
+	<repository>
+            <id>artifactory.fao.org</id>
+            <name>${dm-fao.rel-name}</name>
+            <url>${dm-fao.rel-url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>artifactory.fao.org</id>
+            <name>${dm-fao.snap-name}</name>
+            <url>${dm-fao.snap-url}</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+  <!-- =========================================================== -->
+  <!--     Dependency Management                                   -->
+  <!-- =========================================================== -->
+    <dependencyManagement>
+    
+	<!-- Geoserver base installation -->
+	<dependencies>
+	  	<!-- inherit DependencyManagement -->
+		<dependency>
+			<groupId>org.geoserver</groupId>
+			<artifactId>geoserver</artifactId>
+			<version>${geoserver.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.geoserver.web</groupId>
+			<artifactId>web-app</artifactId>
+			<version>${geoserver.version}</version>
+		</dependency>
+		
+		<!--dependency>
+			<groupId>org.geoserver</groupId>
+			<artifactId>gwc</artifactId>
+			<version>${geoserver.version}</version>
+		</dependency-->
+		
+		<!-- fao extensions -->
+	
+		<dependency>
+			<groupId>org.fao.data.geoserver.json</groupId>
+			<artifactId>getLegendGraphic</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>FaoGeoCrossDomain</artifactId>
+			<version>1.1.3-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>fao-geo-querymdx-api</artifactId>
+			<version>${fao.filter.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>fao-geo-context-listener</artifactId>
+			<version>${fao.filter.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>fao-geo-clearcache-filter</artifactId>
+			<version>${fao.filter.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>fao-geo-dynamicstyle-filter</artifactId>
+			<version>${fao.filter.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>fao-geo-dynamicstyle-filter</artifactId>
+			<version>${fao.filter.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>fao-geo-getmap-filter</artifactId>
+			<version>${fao.filter.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>fao-geo-getfeatureinfo-filter</artifactId>
+			<version>${fao.filter.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>fao-geo-querymdx-api</artifactId>
+			<version>${fao.filter.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>fao-geo-store-api</artifactId>
+			<version>${fao.filter.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fao.data.map.geoserver.libs</groupId>
+			<artifactId>fao-geo-util-api</artifactId>
+			<version>${fao.filter.version}</version>
+		</dependency>
+		
+		<!-- common extension modules -->
+		<dependency>
+			<groupId>org.geoserver.extension</groupId>
+			<artifactId>control-flow</artifactId>
+			<version>${geoserver.version}</version>
+		</dependency>
+		<!--dependency>
+			<groupId>org.geoserver.extension</groupId>
+			<artifactId>wps-core</artifactId>
+			<version>${geoserver.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.geoserver.extension</groupId>
+			<artifactId>web-wps</artifactId>
+			<version>${geoserver.version}</version>
+		</dependency-->
+		
+		<!--dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.8</version>
+		</dependency-->
+	</dependencies>
+    </dependencyManagement>
+    
+    <modules>
+	<module>json</module>
+	<module>web</module>
+    </modules>
+
+    <repositories>
+      
+	<!-- FAO -->
+        <repository>
+	    <id>artifactory.fao.org</id>
+	    <name>artifactory.fao.org-snapshots</name>
+	    <url>http://artifactory.fao.org/artifactory/tcdr-geoserver-release</url>
+	    <snapshots>
+                <enabled>true</enabled>
+	    </snapshots>
+	</repository>
+	<repository>
+            <id>artifactory</id>
+            <name>FAO Artifactory</name>
+            <url>http://artifactory.fao.org/artifactory/techcdr/</url>
+        </repository>
+      
+	<!-- GeoSolutions -->
+	<repository>
+		<id>geosolutions</id>
+		<name>GeoSolutions Repository</name>
+		<url>http://maven.geo-solutions.it</url>
+	</repository>
+	
+	<!-- others -->
+        <repository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net repository</name>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+
+        <repository>
+            <id>osgeo</id>
+            <name>Open Source Geospatial Foundation Repository</name>
+            <url>http://download.osgeo.org/webdav/geotools/</url>
+        </repository>
+
+        <repository>
+            <id>opengeo</id>
+            <name>OpenGeo Maven Repository</name>
+            <url>http://repo.opengeo.org</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    
+    <dependencies>
+    </dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-compiler-plugin</artifactId>
+			    <version>2.3.2</version>
+			    <configuration>
+				<source>1.6</source>
+				<target>1.6</target>
+			    </configuration>
+			</plugin>
+			<plugin>
+			    <inherited>true</inherited>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-source-plugin</artifactId>
+			    <configuration>
+				<attach>true</attach>
+			    </configuration>
+			    <executions>
+				<execution>
+				    <id>attach-sources</id>
+				    <goals>
+					<goal>jar</goal>
+				    </goals>
+				</execution>
+			    </executions>
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-release-plugin</artifactId>
+			    <version>2.2.2</version>
+			    <configuration>
+				<tagNameFormat>v@{project.version}</tagNameFormat>
+			    </configuration>
+			</plugin>
+		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>2.3</version>
+			</extension>
+		</extensions>
+	</build>
+        
+</project>

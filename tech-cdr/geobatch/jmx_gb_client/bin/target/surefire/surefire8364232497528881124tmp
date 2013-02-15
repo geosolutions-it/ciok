@@ -1,0 +1,5 @@
+#surefire
+#Tue Jun 12 14:24:12 CEST 2012
+user.dir=/home/carlo/work/projects/ciok/trunk/jmx_gb_client
+localRepository=/home/carlo/.m2/repository
+basedir=/home/carlo/work/projects/ciok/trunk/jmx_gb_client

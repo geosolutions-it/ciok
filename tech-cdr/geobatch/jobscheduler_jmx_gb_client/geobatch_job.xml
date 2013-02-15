@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="scheduler_documentation.xsl" ?>
+
+<spooler>
+
+	<config mail_xslt_stylesheet="config/scheduler_mail.xsl" port="4444">
+		<security ignore_unknown_hosts="yes">
+			<allowed_host host="localhost" level="all" />
+			<allowed_host host="carlo-workstation" level="all" />
+		</security>
+
+
+		<process_classes>
+			<process_class max_processes="30" /> <!-- max. number of processes in default process class -->
+			<process_class max_processes="10" name="single" /> <!-- max. number of processes running in single -->
+			<process_class max_processes="10" name="multi" /> <!-- max. number of processes running in multiple -->
+		</process_classes>
+
+		<http_server>
+			<http_directory path="${SCHEDULER_HOME}/" url_path="/scheduler_home/" />
+			<http_directory path="${SCHEDULER_DATA}/" url_path="/scheduler_data/" />
+		</http_server>
+		<jobs>
+			<job name="GeoServerPublish" title="Publish on GeoServer" tasks="1">
+				<params>
+					<!-- the properties file used to configure connection parameters 
+					    F.E.: =========jmx.properties=========
+					    # remote JMX server url
+					    gb_jmx_url=localhost
+					    # remote JMX server port
+					    gb_jmx_port=1099
+					    # bean name which implements ActionManager interface
+					    JMXActionManager=JMXActionManager
+					    ======================================     
+					    NOTE: above keywords are reserved keys -->
+					<param name="CONFIG_FILE" value="${SCHEDULER_HOME}/config/jmx.properties" />
+					<!-- polling wait time in seconds -->
+					<param name="PROCESS_DELAY" value="10" />
+					<!-- the keyword which sets the GeoBatch action to perform -->
+					<param name="SERVICE_ID" value="GeotiffGeoServerService" />
+					<!-- the input of the action -->
+					<param name="INPUT" value="/opt/data/geotiff/example.tiff" />
+					<!-- the input of the action [if the action need it] -->
+					<!--param name = "OUPUT" value = "/opt/data/geotiff/example_out" / -->
+					<!-- All the needed parameter to configure the action -->
+					<param name="geoserverUID" value="admin" />
+					<param name="geoserverPWD" value="geoserver" />
+					<param name="geoserverURL" value="http://localhost:8181/geoserver" />
+
+					<param name="dataTransferMethod" value="EXTERNAL" />
+					<param name="layer" value="layerName" />
+					<param name="defaultNamespace" value="topp" />
+					<param name="defaultNamespaceUri" value="topp" />
+					<param name="defaultStyle" value="raster" />
+					<param name="crs" value="EPSG:4326" />
+					<param name="envelope" value="" />
+				</params>
+				<script language="java"
+					java_class="it.geosolutions.geobatch.services.jmx.GeoBatchActionJob">
+				</script>
+				<!--run_time once = "yes"/ -->
+				<run_time repeat="1" />
+			</job>
+		</jobs>
+	</config>
+</spooler>

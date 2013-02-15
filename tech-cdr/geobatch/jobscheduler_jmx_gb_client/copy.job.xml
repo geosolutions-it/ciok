@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<job name="copy">
+	<params>
+		<!-- the properties file used to configure connection parameters F.E.: 
+			=========jmx.properties========= # remote JMX server url gb_jmx_url=localhost 
+			# remote JMX server port gb_jmx_port=1099 # bean name which implements ActionManager 
+			interface JMXActionManager=JMXActionManager ====================================== 
+			NOTE: above keywords are reserved keys -->
+		<param name="CONFIG_FILE" value="${SCHEDULER_HOME}/config/jmx.properties" />
+		<!-- polling wait time in seconds -->
+		<param name="PROCESS_DELAY" value="2" />
+		<!-- the keyword which sets the GeoBatch action to perform -->
+		<param name="SERVICE_ID" value="CopyGeneratorService" />
+		<!-- the input of the action -->
+		<param name="INPUT" value="/home/carlo/work/data/sample/a.tiff" />
+		<!-- the input of the action [if the action need it] -->
+		<!--param name = "OUPUT" value = "/opt/data/geotiff/example_out" / -->
+		<!-- All the needed parameter to configure the action -->
+		<param name="destination" value="/home/carlo/work/data/sample/copy_out" />
+		<param name="timeout" value="100" />
+	</params>
+	<script language="java"
+		java_class="it.geosolutions.geobatch.services.jmx.GeoBatchActionJob">
+	</script>
+	<run_time once="yes" />
+	<!--run_time / -->
+
+</job>

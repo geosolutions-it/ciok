@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ZonalStatistics>
+  <ZonalStatistic>
+    <areaLayer>restricted</areaLayer>
+    <feature>
+      <cat>1</cat>
+    </feature>
+    <datalayer>sf:sfdem</datalayer>
+    <stats>
+      <max>1203</max>
+      <min>1191</min>
+      <range>12</range>
+      <mean>1196.3</mean>
+      <std>3.37327</std>
+      <sum>23926</sum>
+      <count>20</count>
+    </stats>
+    <stats range="(-Inf, 1150.0)">
+      <max>1149</max>
+      <min>1129</min>
+      <range>20</range>
+      <mean>1140.696203</mean>
+      <std>4.795887</std>
+      <sum>270345</sum>
+      <count>237</count>
+    </stats>
+    <stats range="[1150.0, 1190.0)">
+      <max>1189</max>
+      <min>1150</min>
+      <range>39</range>
+      <mean>1163.155689</mean>
+      <std>10.918634</std>
+      <sum>194247</sum>
+      <count>167</count>
+    </stats>
+  </ZonalStatistic>
+  <ZonalStatistic>
+    <areaLayer>restricted</areaLayer>
+    <feature>
+      <cat>2</cat>
+    </feature>
+    <datalayer>sf:sfdem</datalayer>
+    <stats>
+      <max>1222</max>
+      <min>1190</min>
+      <range>32</range>
+      <mean>1206.576037</mean>
+      <std>5.298058</std>
+      <sum>261827</sum>
+      <count>217</count>
+    </stats>
+    <stats range="[1150.0, 1190.0)">
+      <max>1189</max>
+      <min>1189</min>
+      <range>0</range>
+      <mean>1189</mean>
+      <std>0</std>
+      <sum>1189</sum>
+      <count>1</count>
+    </stats>
+  </ZonalStatistic>
+</ZonalStatistics>

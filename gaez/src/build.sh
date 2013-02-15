@@ -1,0 +1,1 @@
+mvn clean install eclipse:clean eclipse:eclipse  -DdownloadSources=true  -DdownloadJavadocs=true  -Declipse.addVersionToProjectName=true -Pclassifiedstats,jmx,geotiff,shapefile,imagemosaic,geoserver,-zonalstats,dao.xstream,scripting,task-executor,utils,freemarker -Dmaven.test.skip=true -e 

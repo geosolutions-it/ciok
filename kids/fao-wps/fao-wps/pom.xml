@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.fao.ciok</groupId>
+    <artifactId>geoserver</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>org.fao.ciok.geoserver</groupId>
+  <artifactId>fao-wps</artifactId>
+  <packaging>jar</packaging>
+  <name>FAO CIOK custom WPS processes</name>
+
+  <!-- required to get the jaitools 1.0-SNAPSHOT jars -->
+ <repositories>
+       <repository> 
+            <id>jaitools-snapshots</id> 
+            <name>jaitools snapshots</name> 
+            <url>http://oss.sonatype.org/content/repositories/snapshots/</url> 
+            <snapshots> 
+                <enabled>true</enabled> 
+            </snapshots> 
+        </repository>
+    </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.geoserver.extension</groupId>
+      <artifactId>wps-core</artifactId>
+      <version>${gs.version}</version>
+    </dependency>
+
+        <!-- test dependencies -->
+        <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>3.8.2</version>
+    <scope>test</scope>
+   </dependency>
+
+        <dependency>
+          <groupId>xmlunit</groupId>
+          <artifactId>xmlunit</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>com.mockrunner</groupId>
+          <artifactId>mockrunner</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+           <groupId>org.geoserver</groupId>
+           <artifactId>main</artifactId>
+           <version>${gs.version}</version>
+           <classifier>tests</classifier>
+           <scope>test</scope>
+        </dependency>
+        <dependency>
+           <groupId>org.geoserver.extension</groupId>
+           <artifactId>wps-core</artifactId>
+           <version>${gs.version}</version>
+           <classifier>tests</classifier>
+           <scope>test</scope>
+        </dependency>
+  </dependencies>
+</project>

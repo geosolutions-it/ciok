@@ -1,0 +1,1 @@
+python FAO_wms_request.py -filelocation pathToYourFile -count 1200 -region -180 -90 180 90 -minres 0.002 -maxres 0.1 -minsize 256 256 -maxsize 1024 1024

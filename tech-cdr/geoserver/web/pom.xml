@@ -44,33 +44,6 @@
 
     
     <dependencies>
-		<dependency>
-			<groupId>org.geoserver.web</groupId>
-			<artifactId>web-app</artifactId>
-			<!--exclusions>
-			  <exclusion>
-			    <groupId>org.geoserver</groupId>
-			    <artifactId>gwc</artifactId>
-			  </exclusion>
-			  <exclusion>
-			    <groupId>org.geowebcache.web</groupId>
-			    <artifactId>geowebcache</artifactId>
-			  </exclusion>
-			</exclusions-->
-		</dependency>
-		
-		<!--dependency>
-			<groupId>org.geoserver</groupId>
-			<artifactId>gwc</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.geowebcache.web</groupId>
-			<artifactId>geowebcache</artifactId>
-			<version>1.3-SNAPSHOT</version>
-			<scope>provided</scope>
-		      </dependency-->
-		
 		<!-- fao extensions -->
 		<dependency>
 			<groupId>org.fao.data.geoserver.json</groupId>
@@ -79,7 +52,7 @@
 		
 		<dependency>
 			<groupId>org.fao.data.map.geoserver.libs</groupId>
-			<artifactId>FaoGeoCrossDomain</artifactId>
+			<artifactId>fao-geo-cross-domain</artifactId>
 		</dependency>
 		
 		<dependency>
@@ -132,26 +105,46 @@
 			<artifactId>fao-geo-util-api</artifactId>
 		</dependency>
 
+		<!-- GeoServer -->
+		
+		<dependency>
+		  <groupId>org.geoserver.web</groupId>
+		  <artifactId>web-app</artifactId>
+		  <type>pom</type>
+		  <exclusions>
+		    <exclusion>
+		      <groupId>org.geoserver</groupId>
+		      <artifactId>gwc</artifactId>
+		    </exclusion>
+		    <exclusion>
+		      <groupId>org.geoserver.web</groupId>
+		      <artifactId>web-gwc</artifactId>
+  		    </exclusion>
+		    <exclusion>
+		      <groupId>org.geowebcache.web</groupId>
+		      <artifactId>geowebcache</artifactId>
+		    </exclusion>
+		  </exclusions>
+		</dependency>
+		
 		<!-- common extension modules -->
 		<dependency>
 			<groupId>org.geoserver.extension</groupId>
 			<artifactId>control-flow</artifactId>
 		</dependency>
+		
 		<!--dependency>
 			<groupId>org.geoserver.extension</groupId>
 			<artifactId>wps-core</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.geoserver.extension</groupId>
 			<artifactId>web-wps</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
 		</dependency-->
 
 		<!-- Jetty test dependencies to start GeoServer from an IDE -->
+		
 		<dependency>
 			<groupId>org.mortbay.jetty</groupId>
 			<artifactId>jetty</artifactId>
@@ -210,6 +203,9 @@
 						</goals>
 					</execution>
 				</executions>
+				<dependencies>
+				  
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

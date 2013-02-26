@@ -14,7 +14,7 @@
   <!-- =========================================================== -->
   <groupId>org.fao.data.map</groupId>
   <artifactId>geoserver</artifactId>
-  <version>tech-cdr-geoserver-TS-2.2.5_RC2</version>
+  <version>tech-cdr-geoserver-TS-2.2.5_RC3</version>
   <packaging>pom</packaging>
   <inceptionYear>2013</inceptionYear>
   <name>geoserver</name>

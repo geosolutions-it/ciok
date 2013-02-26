@@ -10,16 +10,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.fao.data.maps</groupId>
+    <groupId>org.fao.data.map</groupId>
     <artifactId>geoserver</artifactId>
-    <version>tech-cdr-geoserver-2.2.5_RC1</version>
+    <version>tech-cdr-geoserver-TS-2.2.5_RC2</version>
   </parent>
   <!-- =========================================================== -->
   <!--     Module Description                                      -->
   <!-- =========================================================== -->
-  <groupId>org.fao.data.maps.geoserver</groupId>
+  <groupId>org.fao.data.map.geoserver</groupId>
   <artifactId>web</artifactId>
-  <version>tech-cdr-geoserver-2.2.5_RC1</version>
+  <version>tech-cdr-geoserver-TS-2.2.5_RC2</version>
   <packaging>war</packaging>
   <name>web</name>
   <description>Geoserver for data.fao.org</description>
@@ -31,6 +31,7 @@
     </license>
   </licenses>
   <properties>
+    <faodata.esb.server.http.host>http://ts-data.fao.org/</faodata.esb.server.http.host>
     <configDirectory>${basedir}</configDirectory>
     <webappSourceDirectory>${basedir}/src/main/webapp</webappSourceDirectory>
     <jetty-version>6.1.8</jetty-version>
@@ -38,7 +39,7 @@
   <dependencies>
     <!-- fao extensions -->
     <dependency>
-      <groupId>org.fao.data.geoserver.json</groupId>
+      <groupId>org.fao.data.map.geoserver.json</groupId>
       <artifactId>getLegendGraphic</artifactId>
     </dependency>
     <dependency>

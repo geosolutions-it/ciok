@@ -143,7 +143,7 @@
       </snapshots>
     </repository>
     <repository>
-      <id>artifactory.fao.org</id>
+      <id>snapshot.artifactory.fao.org</id>
       <name>artifactory.fao.org-snapshots</name>
       <url>http://artifactory.fao.org/artifactory/tcdr-geoserver-snapshot</url>
       <snapshots>

@@ -13,14 +13,13 @@
   <!--     Module Description                                      -->
   <!-- =========================================================== -->
   <parent>
-	<groupId>org.geoserver</groupId>
-	<artifactId>geoserver</artifactId>
-	<version>2.2-SNAPSHOT</version>
+    <groupId>org.geoserver</groupId>
+    <artifactId>geoserver</artifactId>
+    <version>2.2-SNAPSHOT</version>
   </parent>
-  
   <groupId>org.fao.data.map</groupId>
   <artifactId>geoserver</artifactId>
-  <version>tech-cdr-geoserver-TS-2.2-SNAPSHOT</version>
+  <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <inceptionYear>2013</inceptionYear>
   <name>geoserver</name>
@@ -137,8 +136,16 @@
     <!-- FAO -->
     <repository>
       <id>artifactory.fao.org</id>
-      <name>artifactory.fao.org-snapshots</name>
+      <name>artifactory.fao.org-release</name>
       <url>http://artifactory.fao.org/artifactory/tcdr-geoserver-release</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>artifactory.fao.org</id>
+      <name>artifactory.fao.org-snapshots</name>
+      <url>http://artifactory.fao.org/artifactory/tcdr-geoserver-snapshot</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>

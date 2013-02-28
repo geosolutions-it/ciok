@@ -12,6 +12,12 @@
   <!-- =========================================================== -->
   <!--     Module Description                                      -->
   <!-- =========================================================== -->
+  <parent>
+	<groupId>org.geoserver</groupId>
+	<artifactId>geoserver</artifactId>
+	<version>2.2-SNAPSHOT</version>
+  </parent>
+  
   <groupId>org.fao.data.map</groupId>
   <artifactId>geoserver</artifactId>
   <version>tech-cdr-geoserver-TS-2.2-SNAPSHOT</version>

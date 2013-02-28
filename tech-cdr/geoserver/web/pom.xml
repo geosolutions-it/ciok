@@ -140,6 +140,42 @@
       <version>${jetty-version}</version>
     </dependency>
   </dependencies>
+  <profiles>
+    <profile>
+      <id>war4FAO</id>
+      <build>
+	<plugins>
+	  <plugin>
+	    <inherited>true</inherited>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-war-plugin</artifactId>
+	    <configuration>
+	      <warName>geoserver</warName>
+	      <webappDirectory>${project.build.directory}/geoserver</webappDirectory>
+	      <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+	      <!-- Exclude libs already present in FAO tomcat. -->
+	      <packagingExcludes>
+		      WEB-INF/lib/*gwc*,
+		      WEB-INF/lib/*jai*,
+		      WEB-INF/lib/imageio-ext*,
+		      WEB-INF/lib/*postgresql*
+	      </packagingExcludes>
+	    </configuration>
+	    <executions>
+	      <execution>
+		<phase>install</phase>
+		<goals>
+		  <goal>war</goal>
+		</goals>
+	      </execution>
+	    </executions>
+	    <dependencies>
+	    </dependencies>
+	  </plugin>
+	</plugins>
+      </build>
+    </profile>
+  </profiles>
   <build>
     <plugins>
       <plugin>

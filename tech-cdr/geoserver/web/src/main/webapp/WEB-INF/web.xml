@@ -104,6 +104,11 @@
 
     <!-- FILTERS -->
     <filter>
+        <filter-name>FAO Kibana Logs Filter</filter-name>
+        <filter-class>org.fao.data.map.geoserver.filter.kibana.KibanaFilter</filter-class>
+    </filter>
+    
+    <filter>
         <filter-name>cross-origin</filter-name>
         <filter-class>org.fao.techcdr.filter.CrossOriginFilter</filter-class>
     </filter>
@@ -231,10 +236,15 @@
    </filter>
 
 <!-- ======================  FAO  ========================= -->
-   <filter-mapping>
-      <filter-name>cross-origin</filter-name>
-      <url-pattern>/*</url-pattern>
-   </filter-mapping>
+	<filter-mapping>
+		<filter-name>FAO Kibana Logs Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+	   <filter-name>cross-origin</filter-name>
+	   <url-pattern>/*</url-pattern>
+	</filter-mapping>
 
     <filter-mapping>
         <filter-name>FAO GetMap Filter</filter-name>
@@ -416,6 +426,13 @@
     <resource-ref>
       <description>PostgreSQL HUNGERMAP Datasource</description>
       <res-ref-name>jdbc/hungermap</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    
+    <resource-ref>
+      <description>PostgreSQL CONFORMED Datasource</description>
+      <res-ref-name>jdbc/conformed</res-ref-name>
       <res-type>javax.sql.DataSource</res-type>
       <res-auth>Container</res-auth>
     </resource-ref>

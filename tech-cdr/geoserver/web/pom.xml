@@ -10,16 +10,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-	<groupId>org.fao.data.map</groupId>
-	<artifactId>geoserver</artifactId>
-	<version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+    <groupId>org.fao.data.map</groupId>
+    <artifactId>geoserver</artifactId>
+    <version>tech-cdr-geoserver-2.2.5_RC5</version>
   </parent>
   <!-- =========================================================== -->
   <!--     Module Description                                      -->
   <!-- =========================================================== -->
   <groupId>org.fao.data.map.geoserver</groupId>
   <artifactId>web</artifactId>
-  <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+  <version>tech-cdr-geoserver-2.2.5_RC5</version>
   <packaging>war</packaging>
   <name>web</name>
   <description>Geoserver for data.fao.org</description>
@@ -42,10 +42,10 @@
       <groupId>org.fao.data.map.geoserver.json</groupId>
       <artifactId>getLegendGraphic</artifactId>
     </dependency>
-	<dependency>
-		<groupId>org.fao.data.map.geoserver.libs</groupId>
-		<artifactId>fao-geo-kibana-filter</artifactId>
-	</dependency>
+    <dependency>
+      <groupId>org.fao.data.map.geoserver.libs</groupId>
+      <artifactId>fao-geo-kibana-filter</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-cross-domain</artifactId>
@@ -66,10 +66,10 @@
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-dynamicstyle-filter</artifactId>
     </dependency>
-	<dependency>
-		<groupId>org.fao.data.map.geoserver.libs</groupId>
-		<artifactId>fao-geo-dynamicparams-filter</artifactId>
-	</dependency>
+    <dependency>
+      <groupId>org.fao.data.map.geoserver.libs</groupId>
+      <artifactId>fao-geo-dynamicparams-filter</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-getmap-filter</artifactId>
@@ -148,35 +148,35 @@
     <profile>
       <id>war4FAO</id>
       <build>
-	<plugins>
-	  <plugin>
-	    <inherited>true</inherited>
-	    <groupId>org.apache.maven.plugins</groupId>
-	    <artifactId>maven-war-plugin</artifactId>
-	    <configuration>
-	      <warName>geoserver</warName>
-	      <webappDirectory>${project.build.directory}/geoserver</webappDirectory>
-	      <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-	      <!-- Exclude libs already present in FAO tomcat. -->
-	      <packagingExcludes>
+        <plugins>
+          <plugin>
+            <inherited>true</inherited>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+              <warName>geoserver</warName>
+              <webappDirectory>${project.build.directory}/geoserver</webappDirectory>
+              <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+              <!-- Exclude libs already present in FAO tomcat. -->
+              <packagingExcludes>
 		      WEB-INF/lib/*gwc*,
 		      WEB-INF/lib/*jai*,
 		      WEB-INF/lib/imageio-ext*,
 		      WEB-INF/lib/*postgresql*
 	      </packagingExcludes>
-	    </configuration>
-	    <executions>
-	      <execution>
-		<phase>install</phase>
-		<goals>
-		  <goal>war</goal>
-		</goals>
-	      </execution>
-	    </executions>
-	    <dependencies>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>install</phase>
+                <goals>
+                  <goal>war</goal>
+                </goals>
+              </execution>
+            </executions>
+            <dependencies>
 	    </dependencies>
-	  </plugin>
-	</plugins>
+          </plugin>
+        </plugins>
       </build>
     </profile>
   </profiles>

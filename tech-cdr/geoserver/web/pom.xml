@@ -12,14 +12,14 @@
   <parent>
     <groupId>org.fao.data.map</groupId>
     <artifactId>geoserver</artifactId>
-    <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+    <version>tech-cdr-geoserver-2.2.5_RC13</version>
   </parent>
   <!-- =========================================================== -->
   <!--     Module Description                                      -->
   <!-- =========================================================== -->
   <groupId>org.fao.data.map.geoserver</groupId>
   <artifactId>web</artifactId>
-  <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+  <version>tech-cdr-geoserver-2.2.5_RC13</version>
   <packaging>war</packaging>
   <name>web</name>
   <description>Geoserver for data.fao.org</description>

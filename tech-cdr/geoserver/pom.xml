@@ -19,7 +19,7 @@
   </parent>
   <groupId>org.fao.data.map</groupId>
   <artifactId>geoserver</artifactId>
-  <version>tech-cdr-geoserver-2.2.5_RC8</version>
+  <version>tech-cdr-geoserver-2.2.5_RC9</version>
   <packaging>pom</packaging>
   <inceptionYear>2013</inceptionYear>
   <name>geoserver</name>

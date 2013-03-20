@@ -12,14 +12,14 @@
   <parent>
     <groupId>org.fao.data.map</groupId>
     <artifactId>geoserver</artifactId>
-    <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+    <version>tech-cdr-geoserver-2.2.5_RC8</version>
   </parent>
   <!-- =========================================================== -->
   <!--     Module Description                                      -->
   <!-- =========================================================== -->
   <groupId>org.fao.data.map.geoserver</groupId>
   <artifactId>web</artifactId>
-  <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+  <version>tech-cdr-geoserver-2.2.5_RC8</version>
   <packaging>war</packaging>
   <name>web</name>
   <description>Geoserver for data.fao.org</description>
@@ -159,10 +159,10 @@
               <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
               <!-- Exclude libs already present in FAO tomcat. -->
               <packagingExcludes>
-		      WEB-INF/lib/*gwc*,
-		      WEB-INF/lib/*jai*,
-		      WEB-INF/lib/imageio-ext*,
-		      WEB-INF/lib/*postgresql*
+		      **/WEB-INF/lib/*gwc*,
+		      **/WEB-INF/lib/*jai*,
+		      **/WEB-INF/lib/imageio-ext*,
+		      **/WEB-INF/lib/*postgresql*
 	      </packagingExcludes>
             </configuration>
             <executions>

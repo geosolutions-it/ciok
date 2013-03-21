@@ -19,7 +19,7 @@
   </parent>
   <groupId>org.fao.data.map</groupId>
   <artifactId>geoserver</artifactId>
-  <version>tech-cdr-geoserver-2.2.5_RC9</version>
+  <version>tech-cdr-geoserver-2.2.5_RC11</version>
   <packaging>pom</packaging>
   <inceptionYear>2013</inceptionYear>
   <name>geoserver</name>
@@ -40,7 +40,7 @@
   </developers>
   <properties>
     <geoserver.version>2.2.5</geoserver.version>
-    <fao.filter.version>0.0.5</fao.filter.version>
+    <fao.filter.version>0.0.6</fao.filter.version>
   </properties>
   <issueManagement>
     <system>github</system>

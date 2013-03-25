@@ -162,7 +162,8 @@
 		      **/WEB-INF/lib/*gwc*,
 		      **/WEB-INF/lib/*jai*,
 		      **/WEB-INF/lib/imageio-ext*,
-		      **/WEB-INF/lib/*postgresql*
+		      **/WEB-INF/lib/*postgresql*,
+		      **/WEB-INF/lib/commons-dbcp*
 	      </packagingExcludes>
             </configuration>
             <executions>

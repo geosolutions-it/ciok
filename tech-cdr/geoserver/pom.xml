@@ -154,6 +154,11 @@
       <id>artifactory</id>
       <name>FAO Artifactory</name>
       <url>http://artifactory.fao.org/artifactory/techcdr/</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </snapshots>
     </repository>
     <!-- GeoSolutions -->
     <repository>
@@ -178,6 +183,8 @@
       <url>http://repo.opengeo.org</url>
       <snapshots>
         <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
       </snapshots>
     </repository>
   </repositories>

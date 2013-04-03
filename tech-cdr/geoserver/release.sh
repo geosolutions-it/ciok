@@ -8,7 +8,7 @@ TAG="tech-cdr-geoserver-2.2.5_RC14"
 #git add -u
 #git commit -m "release ${TAG}"
 #git tag -a ${TAG} -m "release ${TAG}"
-#try out -> git svn rebase
+#if git push -> git svn rebase
 #git svn dcommit
 #git svn tag ${TAG} -m "release ${TAG}"
 
@@ -18,6 +18,6 @@ TAG="tech-cdr-geoserver-2.2.5_RC14"
 #nano pom.xml
 #git add -u
 #git commit -m "preparing for the next tech-cdr geoserver release iteration"
-#git pull origin master
+# if git svn dcommit -> git rebase origin/master
 #git push origin master --tags
 #git svn dcommit

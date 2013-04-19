@@ -20,7 +20,9 @@ import org.geotools.process.gs.GSProcess;
 public class DynamicLayerInfoProcess implements GSProcess {
     @DescribeResult(name = "result", description = "The collection of result polygons")
     public String execute(
-            @DescribeParameter(name = "input", description = "The json to be split") String input) {
-        return "The input is: " + input; // TODO implement here
+            @DescribeParameter(name = "DynamicStyle", description = "The DynamicStyle as json") String dynamicStyle,
+            @DescribeParameter(name = "QueryMDX", description = "The QueryMDX as json") String queryMDX,
+            @DescribeParameter(name = "Layer", description = "The complete layer name in the form NAMESPACE:LAYERNAME") String layer) {
+        return "{ DynamicStyle: "+dynamicStyle+", QueryMDX: "+queryMDX+" Layer: "+layer+" }"; // TODO implementation here
     }
 }

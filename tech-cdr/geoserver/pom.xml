@@ -39,7 +39,7 @@
     </developer>
   </developers>
   <properties>
-    <geoserver.version>2.2-SNAPSHOT</geoserver.version>
+<!--     <geoserver.version>2.2-SNAPSHOT</geoserver.version> -->
     <fao.filter.version>0.0.11-SNAPSHOT</fao.filter.version>
   </properties>
   <issueManagement>
@@ -70,6 +70,25 @@
       <!-- ============== -->
       <!-- fao extensions -->
       <!-- ============== -->
+      
+      <!-- WPS -->
+      
+      <dependency>
+	<groupId>org.fao.data.map.geoserver.wps</groupId>
+	<artifactId>getDynamicLayerInfo</artifactId>
+	<version>${project.version}</version>
+      </dependency>
+      
+      <!-- JSON -->
+      
+      <dependency>
+        <groupId>org.fao.data.map.geoserver.json</groupId>
+        <artifactId>getLegendGraphic</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    
+      <!-- FILTERS -->
+      
       <dependency>
         <groupId>org.fao.data.map.geoserver.libs</groupId>
         <artifactId>fao-geo-filters</artifactId>
@@ -77,11 +96,7 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.fao.data.map.geoserver.json</groupId>
-        <artifactId>getLegendGraphic</artifactId>
-        <version>${project.version}</version>
-      </dependency>
+      
       <!-- ========= -->
       <!-- GeoServer -->
       <!-- ========= -->
@@ -89,47 +104,60 @@
       <dependency>
         <groupId>org.geoserver</groupId>
         <artifactId>geoserver</artifactId>
-        <version>${geoserver.version}</version>
+        <version>${gs.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.geoserver.web</groupId>
         <artifactId>web-app</artifactId>
-        <version>${geoserver.version}</version>
+        <version>${gs.version}</version>
         <type>pom</type>
       </dependency>
       <!-- specified for exclusions -->
       <dependency>
         <groupId>org.geoserver</groupId>
         <artifactId>gwc</artifactId>
-        <version>${geoserver.version}</version>
+        <version>${gs.version}</version>
       </dependency>
       <dependency>
         <groupId>org.geoserver.web</groupId>
         <artifactId>web-gwc</artifactId>
-        <version>${geoserver.version}</version>
+        <version>${gs.version}</version>
       </dependency>
+      
+      <!-- ======================== -->
       <!-- common extension modules -->
+      <!-- ======================== -->
+      
+      <!-- WPS -->
+      <dependency>
+        <groupId>org.geoserver.extension</groupId>
+	<artifactId>wps-core</artifactId>
+	<version>${gs.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.geoserver.extension</groupId>
+	<artifactId>web-wps</artifactId>
+	<version>${gs.version}</version>
+      </dependency>
+      <!--<dependency>
+	<groupId>org.geotools</groupId>
+	<artifactId>gt-process</artifactId>
+	<version>${gt.version}</version>
+      </dependency>-->
+      
       <dependency>
         <groupId>org.geoserver.extension</groupId>
         <artifactId>control-flow</artifactId>
-        <version>${geoserver.version}</version>
+        <version>${gs.version}</version>
       </dependency>
-      <!--dependency>
-			<groupId>org.geoserver.extension</groupId>
-			<artifactId>wps-core</artifactId>
-			<version>${geoserver.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.geoserver.extension</groupId>
-			<artifactId>web-wps</artifactId>
-			<version>${geoserver.version}</version>
-		</dependency-->
+      
     </dependencies>
   </dependencyManagement>
   <modules>
     <module>json</module>
+    <module>wps</module>
     <module>web</module>
   </modules>
   <repositories>

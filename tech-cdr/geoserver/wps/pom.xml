@@ -18,10 +18,10 @@
   <!--     Module Description                                      -->
   <!-- =========================================================== -->
   <groupId>org.fao.data.map.geoserver</groupId>
-  <artifactId>json</artifactId>
+  <artifactId>wps</artifactId>
   <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>JSON</name>
+  <name>WPS</name>
   <licenses>
     <license>
       <name>Lesser General Public License (LGPL)</name>
@@ -30,6 +30,6 @@
     </license>
   </licenses>
   <modules>
-    <module>getLegendGraphic</module>
+    <module>getDynamicLayerInfo</module>
   </modules>
 </project>

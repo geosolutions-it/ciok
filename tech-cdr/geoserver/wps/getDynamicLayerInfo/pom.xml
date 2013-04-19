@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.fao.data.map.geoserver</groupId>
-    <artifactId>json</artifactId>
+    <artifactId>wps</artifactId>
     <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
   </parent>
   <groupId>org.fao.data.map.geoserver.wps</groupId>
@@ -15,18 +15,6 @@
       <groupId>org.geoserver.extension</groupId>
       <artifactId>wps-core</artifactId>
     </dependency>
-    <!--<dependency>
-      <groupId>org.geoserver.extension</groupId>
-      <artifactId>wps</artifactId>
-    </dependency>-->
-    <!--<dependency>
-      <groupId>org.geotools</groupId>
-      <artifactId>gt-process</artifactId>
-    </dependency>-->
-    <!--<dependency>
-      <groupId>org.geotools</groupId>
-      <artifactId>gt-geometry</artifactId>
-    </dependency>-->
     
     <dependency>
       <groupId>org.geoserver</groupId>

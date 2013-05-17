@@ -4,6 +4,8 @@
  */
 package org.geoserver.wps;
 
+import org.fao.data.map.geoserver.layer.dynamic.DynamicLayer;
+import org.fao.data.map.geoserver.layer.dynamic.GetDynamicLayerInfoResponse;
 import org.geotools.process.factory.DescribeParameter;
 import org.geotools.process.factory.DescribeProcess;
 import org.geotools.process.factory.DescribeResult;
@@ -20,9 +22,20 @@ import org.geotools.process.gs.GSProcess;
 public class DynamicLayerInfoProcess implements GSProcess {
     @DescribeResult(name = "result", description = "The collection of result polygons")
     public String execute(
-            @DescribeParameter(name = "DynamicStyle", description = "The DynamicStyle as json") String dynamicStyle,
+            @DescribeParameter(name = "Layer", description = "The complete layer name in the form NAMESPACE:LAYERNAME") String layer,
             @DescribeParameter(name = "QueryMDX", description = "The QueryMDX as json") String queryMDX,
-            @DescribeParameter(name = "Layer", description = "The complete layer name in the form NAMESPACE:LAYERNAME") String layer) {
-        return "{ DynamicStyle: "+dynamicStyle+", QueryMDX: "+queryMDX+" Layer: "+layer+" }"; // TODO implementation here
+            @DescribeParameter(name = "DynamicStyle", description = "The DynamicStyle as json") String dynamicStyle
+
+    ) {
+
+        final GetDynamicLayerInfoResponse response = DynamicLayer.getDynamicLayerInfo(layer, queryMDX,
+                dynamicStyle);
+
+        return String
+                .format("{\"RunTime\":\"%s\",\"Error\":\"%s\",\"QueryId\":\"%s\",\"DynamicStyleId\":\"%s\"}",
+                        response.getRunTime(),
+                        response.getError() == null ? "null" : response.getError(),
+                        response.getQueryId(), response.getDynamicStyleId());
+
     }
 }

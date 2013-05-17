@@ -17,6 +17,11 @@
     </dependency>
     
     <dependency>
+	<groupId>org.fao.data.map.geoserver.libs</groupId>
+    	<artifactId>fao-geo-dynamiclayer-api</artifactId>
+    </dependency>
+    
+    <dependency>
       <groupId>org.geoserver</groupId>
       <artifactId>ows</artifactId>
       <classifier>tests</classifier>

@@ -53,6 +53,12 @@
     </dependency>
     
     <!-- FILTERS -->
+    
+    <dependency>
+	<groupId>org.fao.data.map.geoserver.libs</groupId>
+    	<artifactId>fao-geo-dynamiclayer-api</artifactId>
+    </dependency>
+    
     <dependency>
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-kibana-filter</artifactId>

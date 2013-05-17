@@ -23,13 +23,13 @@ public class DynamicLayerInfoProcess implements GSProcess {
     @DescribeResult(name = "result", description = "The collection of result polygons")
     public String execute(
             @DescribeParameter(name = "Layer", description = "The complete layer name in the form NAMESPACE:LAYERNAME") String layer,
-            @DescribeParameter(name = "QueryMDX", description = "The QueryMDX as json") String queryMDX,
-            @DescribeParameter(name = "DynamicStyle", description = "The DynamicStyle as json") String dynamicStyle
+            @DescribeParameter(name = "QueryMDX", description = "The QueryMDX as json [optional]", min = 0, max = 1) String queryMDX,
+            @DescribeParameter(name = "DynamicStyle", description = "The DynamicStyle as json [optional]", min = 0, max = 1) String dynamicStyle
 
     ) {
 
-        final GetDynamicLayerInfoResponse response = DynamicLayer.getDynamicLayerInfo(layer, queryMDX,
-                dynamicStyle);
+        final GetDynamicLayerInfoResponse response = DynamicLayer.getDynamicLayerInfo(layer,
+                queryMDX, dynamicStyle);
 
         return String
                 .format("{\"RunTime\":\"%s\",\"Error\":\"%s\",\"QueryId\":\"%s\",\"DynamicStyleId\":\"%s\"}",

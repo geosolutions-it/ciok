@@ -39,7 +39,7 @@
     </developer>
   </developers>
   <properties>
-<!--     <geoserver.version>2.2-SNAPSHOT</geoserver.version> -->
+    <geoserver.version>2.2-SNAPSHOT</geoserver.version>
     <fao.filter.version>0.0.11-SNAPSHOT</fao.filter.version>
   </properties>
   <issueManagement>

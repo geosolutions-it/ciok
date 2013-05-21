@@ -151,6 +151,7 @@
     </dependencies>
   </dependencyManagement>
   <modules>
+    <module>rest</module>
     <module>json</module>
     <module>wps</module>
     <module>web</module>

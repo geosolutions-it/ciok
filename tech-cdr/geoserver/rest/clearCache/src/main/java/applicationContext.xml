@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="restClearCacheMapping" class="org.geoserver.rest.RESTMapping">
+		<property name="routes">
+			<map>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}/{layer}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}/{layer}/{catalog}/{schema}/{cube}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}/{layer}/{catalog}/{schema}/{cube}/{connection}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="clearCacheFinder" class="org.geoserver.rest.ClearCacheFinder" />
+
+</beans>

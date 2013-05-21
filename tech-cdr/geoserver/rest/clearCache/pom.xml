@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.fao.data.map.geoserver</groupId>
+    <artifactId>rest</artifactId>
+    <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+  </parent>
+  <groupId>org.fao.data.map.geoserver.rest</groupId>
+  <artifactId>clearCache</artifactId>
+  <packaging>jar</packaging>
+  <name>REST module for clearCache</name>
+  <dependencies>
+    
+    <dependency>
+      <groupId>org.fao.data.map.geoserver.rest</groupId>
+      <artifactId>clearCacheInterface</artifactId>
+      <version>1.0</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.geoserver</groupId>
+      <artifactId>rest</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.geoserver</groupId>
+      <artifactId>ows</artifactId>
+      <classifier>tests</classifier>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.geoserver</groupId>
+      <artifactId>main</artifactId>
+      <classifier>tests</classifier>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mockrunner</groupId>
+      <artifactId>mockrunner</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymockclassextension</artifactId>
+      <version>2.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>xmlunit</groupId>
+      <artifactId>xmlunit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+    </testResources>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <configuration>
+          <instrumentation>
+            <!-- ignores>
+             <ignore>**/*Exception.class</ignore>
+            </ignores-->
+            <excludes>
+              <exclude>**/*Exception.class</exclude>
+            </excludes>
+            <!-- includes>
+              <include>**/*Test.class</include>
+            </includes-->
+          </instrumentation>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

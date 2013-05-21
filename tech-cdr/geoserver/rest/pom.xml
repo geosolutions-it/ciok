@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- =======================================================================    
+        Maven Project Configuration File                                        
+                                                                                
+        GeoSolutions GeoServer for CIOK Project                                                    
+            http://data.fao.org
+                                                                                            
+        Version: $Id: pom.xml 329 2013-01-21 16:20:09Z ccancellieri $
+     ======================================================================= -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.fao.data.map</groupId>
+    <artifactId>geoserver</artifactId>
+    <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+  </parent>
+  <!-- =========================================================== -->
+  <!--     Module Description                                      -->
+  <!-- =========================================================== -->
+  <groupId>org.fao.data.map.geoserver</groupId>
+  <artifactId>rest</artifactId>
+  <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>REST</name>
+  <licenses>
+    <license>
+      <name>Lesser General Public License (LGPL)</name>
+      <url>http://www.gnu.org/copyleft/lesser.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <modules>
+    <!--module>clearCache</module-->
+    <module>clearCacheInterface</module>
+  </modules>
+</project>

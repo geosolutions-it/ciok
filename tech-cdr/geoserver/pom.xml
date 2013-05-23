@@ -71,6 +71,20 @@
       <!-- fao extensions -->
       <!-- ============== -->
       
+      <!-- REST -->
+      
+    <dependency>
+      <groupId>org.fao.data.map.geoserver.rest</groupId>
+      <artifactId>clearCache</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  
+    <dependency>
+      <groupId>org.fao.data.map.geoserver.rest</groupId>
+      <artifactId>clearCacheInterface</artifactId>
+      <version>1.0</version>
+    </dependency>
+      
       <!-- WPS -->
       
       <dependency>
@@ -129,6 +143,7 @@
       <!-- ======================== -->
       <!-- common extension modules -->
       <!-- ======================== -->
+      
       
       <!-- WPS -->
       <dependency>

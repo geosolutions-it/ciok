@@ -30,7 +30,7 @@
     </license>
   </licenses>
   <modules>
-    <!--module>clearCache</module-->
+    <module>clearCache</module>
     <module>clearCacheInterface</module>
   </modules>
 </project>

@@ -1,14 +1,40 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-<beans>
+	<context:annotation-config />
+	<context:component-scan base-package="org.geoserver.rest" />
+
+	<bean id="dummy" class="org.geoserver.rest.DummyClearCache" />
 
 	<bean id="restClearCacheMapping" class="org.geoserver.rest.RESTMapping">
 		<property name="routes">
 			<map>
 				<entry>
 					<key>
+						<value>/clearcache</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}.{format}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
 						<value>/clearcache/{workspace}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}/{layer}.{format}</value>
 					</key>
 					<value>clearCacheFinder</value>
 				</entry>
@@ -20,7 +46,43 @@
 				</entry>
 				<entry>
 					<key>
+						<value>/clearcache/{workspace}/{layer}/{catalog}.{format}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}/{layer}/{catalog}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}/{layer}/{catalog}/{schema}.{format}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}/{layer}/{catalog}/{schema}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}/{layer}/{catalog}/{schema}/{cube}.{format}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
 						<value>/clearcache/{workspace}/{layer}/{catalog}/{schema}/{cube}</value>
+					</key>
+					<value>clearCacheFinder</value>
+				</entry>
+				<entry>
+					<key>
+						<value>/clearcache/{workspace}/{layer}/{catalog}/{schema}/{cube}/{connection}.{format}</value>
 					</key>
 					<value>clearCacheFinder</value>
 				</entry>

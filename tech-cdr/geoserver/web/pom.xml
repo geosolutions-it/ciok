@@ -38,6 +38,14 @@
   </properties>
   <dependencies>
     <!-- fao extensions -->
+    <dependency>
+      <groupId>org.fao.data.map.geoserver.rest</groupId>
+      <artifactId>clearCache</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.fao.data.map.geoserver.rest</groupId>
+      <artifactId>clearCacheInterface</artifactId>
+    </dependency>
     
     <!-- WPS -->
     

@@ -19,6 +19,10 @@ public abstract class AbstractClearCache implements ClearCache {
     public void clearWorkspace(String workspace, Map map) {
         clearWorkspace(workspace);
     }
+    
+    public void deleteWorkspace(String workspace) {
+        clearWorkspace(workspace);
+    }
 
     public Map getWorkspace(String workspace) {
         clearWorkspace(workspace);
@@ -26,6 +30,10 @@ public abstract class AbstractClearCache implements ClearCache {
     }
 
     public void clearLayer(String workspace, String layer, Map map) {
+        clearLayer(workspace, layer);
+    }
+    
+    public void deleteLayer(String workspace, String layer) {
         clearLayer(workspace, layer);
     }
 
@@ -38,6 +46,11 @@ public abstract class AbstractClearCache implements ClearCache {
             String cube, Map map) {
         clearCube(workspace, layer, catalog, schema, cube);
     }
+    
+    public void deleteCube(String workspace, String layer, String catalog, String schema,
+            String cube) {
+        clearCube(workspace, layer, catalog, schema, cube);
+    }
 
     public Map getCube(String workspace, String layer, String catalog, String schema, String cube) {
         clearCube(workspace, layer, catalog, schema, cube);
@@ -46,6 +59,11 @@ public abstract class AbstractClearCache implements ClearCache {
 
     public void clearConnection(String workspace, String layer, String catalog, String schema,
             String cube, String connection, Map map) {
+        clearConnection(workspace, layer, catalog, schema, cube, connection);
+    }
+    
+    public void deleteConnection(String workspace, String layer, String catalog, String schema,
+            String cube, String connection) {
         clearConnection(workspace, layer, catalog, schema, cube, connection);
     }
 

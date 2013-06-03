@@ -84,6 +84,16 @@
 		<param-value>60</param-value>
 	</context-param>
 
+	<context-param>
+	  <param-name>FAO_STATS_LAYER</param-name>
+	  <param-value>FAODATA:mgd_stats</param-value>
+	</context-param>
+	
+	<context-param>
+	  <param-name>FAO_GEOMETRIES_TABLE_UUID_FIELD</param-name>
+	  <param-value>uuid_location</param-value>
+	</context-param>
+	
 	<!-- FILTERS -->
 	<filter>
 		<filter-name>FAO Kibana Logs Filter</filter-name>
@@ -106,6 +116,11 @@
 	</filter>
 
 	<filter>
+	   <filter-name>FAO DynamicLayer Filter</filter-name>
+	   <filter-class>org.fao.data.map.geoserver.filter.dynamiclayer.DynamicLayerFilter</filter-class>
+	 </filter>
+	 
+	<!-- filter>
 		<filter-name>FAO DynamicStyle Filter</filter-name>
 		<filter-class>org.fao.data.map.geoserver.filter.dynamicstyle.DynamicStyleFilter</filter-class>
 	</filter>
@@ -118,7 +133,7 @@
 	<filter>
 		<filter-name>FAO ClearCache Filter</filter-name>
 		<filter-class>org.fao.data.map.geoserver.filter.cache.ClearCacheFilter</filter-class>
-	</filter>
+	</filter-->
 	<!-- ====================== FAO ========================= -->
 
 	<filter>
@@ -228,6 +243,11 @@
 	</filter-mapping>
 
 	<filter-mapping>
+	  <filter-name>FAO DynamicLayer Filter</filter-name>
+	  <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- filter-mapping>
 		<filter-name>FAO DynamicStyle Filter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
@@ -240,7 +260,7 @@
 	<filter-mapping>
 		<filter-name>FAO ClearCache Filter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping-->
 	<!-- ====================== FAO ========================= -->
 
 	<filter-mapping>

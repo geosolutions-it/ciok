@@ -62,8 +62,32 @@
     
     <!-- FILTERS -->
     
+	<dependency>
+		<groupId>org.fao.data.map.geoserver.libs</groupId>
+		<artifactId>fao-geo-saiku-api</artifactId>
+		<version>${project.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.fao.data.map.geoserver.libs</groupId>
+		<artifactId>fao-geo-simpledynamicstyle-api</artifactId>
+		<version>${project.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.fao.data.map.geoserver.libs</groupId>
+		<artifactId>fao-geo-dynamiclayer-api</artifactId>
+		<version>${project.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.fao.data.map.geoserver.libs</groupId>
+		<artifactId>fao-geo-dynamiclayer-filter</artifactId>
+		<version>${project.version}</version>
+	</dependency>
+    
     <dependency>
-	<groupId>org.fao.data.map.geoserver.libs</groupId>
+		<groupId>org.fao.data.map.geoserver.libs</groupId>
     	<artifactId>fao-geo-dynamiclayer-api</artifactId>
     </dependency>
     
@@ -75,15 +99,15 @@
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-cross-domain</artifactId>
     </dependency>
-    <dependency>
+    <!-- dependency>
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-querymdx-api</artifactId>
-    </dependency>
+    </dependency-->
     <dependency>
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-context-listener</artifactId>
     </dependency>
-    <dependency>
+    <!-- dependency>
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-clearcache-filter</artifactId>
     </dependency>
@@ -94,7 +118,7 @@
     <dependency>
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-dynamicparams-filter</artifactId>
-    </dependency>
+    </dependency-->
     <dependency>
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-getmap-filter</artifactId>

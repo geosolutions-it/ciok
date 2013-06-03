@@ -65,25 +65,21 @@
 	<dependency>
 		<groupId>org.fao.data.map.geoserver.libs</groupId>
 		<artifactId>fao-geo-saiku-api</artifactId>
-		<version>${project.version}</version>
 	</dependency>
 	
 	<dependency>
 		<groupId>org.fao.data.map.geoserver.libs</groupId>
 		<artifactId>fao-geo-simpledynamicstyle-api</artifactId>
-		<version>${project.version}</version>
 	</dependency>
 	
 	<dependency>
 		<groupId>org.fao.data.map.geoserver.libs</groupId>
 		<artifactId>fao-geo-dynamiclayer-api</artifactId>
-		<version>${project.version}</version>
 	</dependency>
 	
 	<dependency>
 		<groupId>org.fao.data.map.geoserver.libs</groupId>
 		<artifactId>fao-geo-dynamiclayer-filter</artifactId>
-		<version>${project.version}</version>
 	</dependency>
     
     <dependency>

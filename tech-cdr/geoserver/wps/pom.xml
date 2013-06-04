@@ -12,14 +12,14 @@
   <parent>
     <groupId>org.fao.data.map</groupId>
     <artifactId>geoserver</artifactId>
-    <version>tech-cdr-geoserver-2.2.5_RC17</version>
+    <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
   </parent>
   <!-- =========================================================== -->
   <!--     Module Description                                      -->
   <!-- =========================================================== -->
   <groupId>org.fao.data.map.geoserver</groupId>
   <artifactId>wps</artifactId>
-  <version>tech-cdr-geoserver-2.2.5_RC17</version>
+  <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>WPS</name>
   <licenses>

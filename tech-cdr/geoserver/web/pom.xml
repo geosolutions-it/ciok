@@ -12,14 +12,14 @@
   <parent>
     <groupId>org.fao.data.map</groupId>
     <artifactId>geoserver</artifactId>
-    <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+    <version>tech-cdr-geoserver-2.2.5_RC17</version>
   </parent>
   <!-- =========================================================== -->
   <!--     Module Description                                      -->
   <!-- =========================================================== -->
   <groupId>org.fao.data.map.geoserver</groupId>
   <artifactId>web</artifactId>
-  <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+  <version>tech-cdr-geoserver-2.2.5_RC17</version>
   <packaging>war</packaging>
   <name>web</name>
   <description>Geoserver for data.fao.org</description>
@@ -46,47 +46,33 @@
       <groupId>org.fao.data.map.geoserver.rest</groupId>
       <artifactId>clearCacheInterface</artifactId>
     </dependency>
-    
     <!-- WPS -->
-    
     <dependency>
       <groupId>org.fao.data.map.geoserver.wps</groupId>
       <artifactId>getDynamicLayerInfo</artifactId>
     </dependency>
-    
     <!-- JSON -->
     <dependency>
       <groupId>org.fao.data.map.geoserver.json</groupId>
       <artifactId>getLegendGraphic</artifactId>
     </dependency>
-    
     <!-- FILTERS -->
-    
-	<dependency>
-		<groupId>org.fao.data.map.geoserver.libs</groupId>
-		<artifactId>fao-geo-saiku-api</artifactId>
-	</dependency>
-	
-	<dependency>
-		<groupId>org.fao.data.map.geoserver.libs</groupId>
-		<artifactId>fao-geo-simpledynamicstyle-api</artifactId>
-	</dependency>
-	
-	<dependency>
-		<groupId>org.fao.data.map.geoserver.libs</groupId>
-		<artifactId>fao-geo-dynamiclayer-api</artifactId>
-	</dependency>
-	
-	<dependency>
-		<groupId>org.fao.data.map.geoserver.libs</groupId>
-		<artifactId>fao-geo-dynamiclayer-filter</artifactId>
-	</dependency>
-    
     <dependency>
-		<groupId>org.fao.data.map.geoserver.libs</groupId>
-    	<artifactId>fao-geo-dynamiclayer-api</artifactId>
+      <groupId>org.fao.data.map.geoserver.libs</groupId>
+      <artifactId>fao-geo-saiku-api</artifactId>
     </dependency>
-    
+    <dependency>
+      <groupId>org.fao.data.map.geoserver.libs</groupId>
+      <artifactId>fao-geo-simpledynamicstyle-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.fao.data.map.geoserver.libs</groupId>
+      <artifactId>fao-geo-dynamiclayer-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.fao.data.map.geoserver.libs</groupId>
+      <artifactId>fao-geo-dynamiclayer-filter</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.fao.data.map.geoserver.libs</groupId>
       <artifactId>fao-geo-kibana-filter</artifactId>
@@ -156,16 +142,14 @@
       <groupId>org.geoserver.extension</groupId>
       <artifactId>control-flow</artifactId>
     </dependency>
-    
     <dependency>
-	    <groupId>org.geoserver.extension</groupId>
-	    <artifactId>wps-core</artifactId>
+      <groupId>org.geoserver.extension</groupId>
+      <artifactId>wps-core</artifactId>
     </dependency>
     <dependency>
-	    <groupId>org.geoserver.extension</groupId>
-	    <artifactId>web-wps</artifactId>
+      <groupId>org.geoserver.extension</groupId>
+      <artifactId>web-wps</artifactId>
     </dependency>
-    
     <!-- Jetty test dependencies to start GeoServer from an IDE -->
     <dependency>
       <groupId>org.mortbay.jetty</groupId>

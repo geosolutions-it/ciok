@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.fao.data.map.geoserver</groupId>
     <artifactId>wps</artifactId>
-    <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+    <version>tech-cdr-geoserver-2.2.5_RC17</version>
   </parent>
   <groupId>org.fao.data.map.geoserver.wps</groupId>
   <artifactId>getDynamicLayerInfo</artifactId>
@@ -15,12 +15,10 @@
       <groupId>org.geoserver.extension</groupId>
       <artifactId>wps-core</artifactId>
     </dependency>
-    
     <dependency>
-	<groupId>org.fao.data.map.geoserver.libs</groupId>
-    	<artifactId>fao-geo-dynamiclayer-api</artifactId>
+      <groupId>org.fao.data.map.geoserver.libs</groupId>
+      <artifactId>fao-geo-dynamiclayer-api</artifactId>
     </dependency>
-    
     <dependency>
       <groupId>org.geoserver</groupId>
       <artifactId>ows</artifactId>

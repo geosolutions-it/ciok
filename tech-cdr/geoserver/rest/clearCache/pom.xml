@@ -4,25 +4,22 @@
   <parent>
     <groupId>org.fao.data.map.geoserver</groupId>
     <artifactId>rest</artifactId>
-    <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+    <version>tech-cdr-geoserver-2.2.5_RC17</version>
   </parent>
   <groupId>org.fao.data.map.geoserver.rest</groupId>
   <artifactId>clearCache</artifactId>
   <packaging>jar</packaging>
   <name>REST module for clearCache</name>
   <dependencies>
-    
     <dependency>
       <groupId>org.fao.data.map.geoserver.rest</groupId>
       <artifactId>clearCacheInterface</artifactId>
       <version>1.0</version>
     </dependency>
-    
     <dependency>
       <groupId>org.geoserver</groupId>
       <artifactId>rest</artifactId>
     </dependency>
-    
     <dependency>
       <groupId>org.geoserver</groupId>
       <artifactId>ows</artifactId>

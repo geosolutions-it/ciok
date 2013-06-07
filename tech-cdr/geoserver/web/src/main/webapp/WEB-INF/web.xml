@@ -85,7 +85,7 @@
 	</context-param>
 
 	<context-param>
-	  <param-name>FAO_STATS_LAYER</param-name>
+	  <param-name>FAO_STATS_LAYERS_PREFIX</param-name>
 	  <param-value>FAODATA:mgd_stats</param-value>
 	</context-param>
 	

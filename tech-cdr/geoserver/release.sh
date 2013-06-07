@@ -1,6 +1,12 @@
 #!/bin/bash
 
-TAG="tech-cdr-geoserver-2.2.5_RC14"
+if [ $# -eq 2 -a "$2" == "Y" ]; then
+	TAG=$1;
+	echo "Performing TAG: "$TAG
+else
+	echo "USAGE: "$0 TAG Y
+	exit 1;
+fi
 
 #git pull origin master
 #./changeVersion -c . ${TAG}

@@ -19,6 +19,6 @@ TAG="tech-cdr-geoserver-2.2.5_RC14"
 #nano pom.xml
 #git add -u
 #git commit -m "preparing for the next tech-cdr geoserver release iteration"
+#git svn rebase
 #git svn dcommit
-#git pull --rebase origin master
 #git push origin master --tags

@@ -102,11 +102,15 @@ public class JSONLegendGraphicBuilder {
 
         json.object().key("getLegendGraphic");
         
+        json.object();
+        
         Description styleDesc=style.getDescription();
         if (styleDesc!=null){
             json.key("title").value(styleDesc.getTitle());
             json.key("description").value(styleDesc.getAbstract());
         }
+        
+        json.key("rules");
         
         json.array();
         final int ruleCount = applicableRules.length;
@@ -234,13 +238,13 @@ public class JSONLegendGraphicBuilder {
                 if (unit != null) {
                     json.key("UOM").value(unit.toString());
                 }
-
                 json.endObject();
             }
             json.endArray();
             json.endObject();
         }
         json.endArray();
+        json.endObject();
         json.endObject();
     }
 

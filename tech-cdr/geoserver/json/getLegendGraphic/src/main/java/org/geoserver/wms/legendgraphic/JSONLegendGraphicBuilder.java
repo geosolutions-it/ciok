@@ -95,12 +95,19 @@ public class JSONLegendGraphicBuilder {
      */
     public static void buildLegendGraphic(Writer w, LegendGraphicModel model)
             throws ServiceException {
-
-        Rule[] applicableRules = LegendGraphicModel.buildApplicableRules(model.getRequest());
+        org.geotools.styling.Style style=model.getStyle();
+        Rule[] applicableRules = LegendGraphicModel.buildApplicableRules(model.getRequest(), style);
         
         JSONBuilder json = new JSONBuilder(w);
 
         json.object().key("getLegendGraphic");
+        
+        Description styleDesc=style.getDescription();
+        if (styleDesc!=null){
+            json.key("title").value(styleDesc.getTitle());
+            json.key("description").value(styleDesc.getAbstract());
+        }
+        
         json.array();
         final int ruleCount = applicableRules.length;
         for (int i = 0; i < ruleCount; i++) {
@@ -108,8 +115,8 @@ public class JSONLegendGraphicBuilder {
             json.object();
             Description desc = applicableRules[i].getDescription();
             if (desc != null) {
-                json.key("description").value(desc.getAbstract());
                 json.key("title").value(desc.getTitle());
+                json.key("description").value(desc.getAbstract());
             }
             json.key("name").value(applicableRules[i].getName());
             Filter filter = applicableRules[i].getFilter();
@@ -124,13 +131,13 @@ public class JSONLegendGraphicBuilder {
 
                 json.object();
 
-                json.key("name").value(applicableRules[i].getName());
-
-                Description symDesc = applicableRules[i].getDescription();
-                if (desc != null) {
-                    json.key("description").value(symDesc.getAbstract());
-                    json.key("title").value(symDesc.getTitle());
-                }
+//                json.key("name").value(applicableRules[i].getName());
+//
+//                Description symDesc = applicableRules[i].getDescription();
+//                if (desc != null) {
+//                    json.key("description").value(symDesc.getAbstract());
+//                    json.key("title").value(symDesc.getTitle());
+//                }
 
                 if (symbolizer instanceof RasterSymbolizer) {
                     RasterSymbolizer rSymbolizer = ((RasterSymbolizer) symbolizer);

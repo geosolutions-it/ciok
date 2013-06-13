@@ -12,14 +12,14 @@
   <parent>
     <groupId>org.fao.data.map</groupId>
     <artifactId>geoserver</artifactId>
-    <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+    <version>tech-cdr-geoserver-2.2.5_RC22</version>
   </parent>
   <!-- =========================================================== -->
   <!--     Module Description                                      -->
   <!-- =========================================================== -->
   <groupId>org.fao.data.map.geoserver</groupId>
   <artifactId>json</artifactId>
-  <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
+  <version>tech-cdr-geoserver-2.2.5_RC22</version>
   <packaging>pom</packaging>
   <name>JSON</name>
   <licenses>

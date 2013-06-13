@@ -15,11 +15,11 @@
   <parent>
     <groupId>org.geoserver</groupId>
     <artifactId>geoserver</artifactId>
-    <version>2.2.5</version>
+    <version>2.2-SNAPSHOT</version>
   </parent>
   <groupId>org.fao.data.map</groupId>
   <artifactId>geoserver</artifactId>
-  <version>tech-cdr-geoserver-2.2.5_RC22</version>
+  <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <inceptionYear>2013</inceptionYear>
   <name>geoserver</name>
@@ -39,8 +39,8 @@
     </developer>
   </developers>
   <properties>
-    <geoserver.version>2.2.5</geoserver.version>
-    <fao.filter.version>0.0.17</fao.filter.version>
+    <geoserver.version>2.2-SNAPSHOT</geoserver.version>
+    <fao.filter.version>0.0.17-SNAPSHOT</fao.filter.version>
   </properties>
   <issueManagement>
     <system>github</system>

@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.fao.data.map.geoserver</groupId>
     <artifactId>wps</artifactId>
-    <version>tech-cdr-geoserver-2.2.5_RC22</version>
+    <version>tech-cdr-geoserver-2.2-SNAPSHOT</version>
   </parent>
   <groupId>org.fao.data.map.geoserver.wps</groupId>
   <artifactId>getDynamicLayerInfo</artifactId>

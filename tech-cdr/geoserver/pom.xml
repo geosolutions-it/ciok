@@ -157,6 +157,12 @@
     <module>web</module>
   </modules>
   <repositories>
+    <!-- GeoSolutions -->
+    <repository>
+      <id>geosolutions</id>
+      <name>GeoSolutions Repository</name>
+      <url>http://maven.geo-solutions.it</url>
+    </repository>
     <repository>
       <id>opengeo</id>
       <name>OpenGeo Maven Repository</name>
@@ -194,12 +200,6 @@
         <updatePolicy>always</updatePolicy>
         <checksumPolicy>warn</checksumPolicy>
       </snapshots>
-    </repository>
-    <!-- GeoSolutions -->
-    <repository>
-      <id>geosolutions</id>
-      <name>GeoSolutions Repository</name>
-      <url>http://maven.geo-solutions.it</url>
     </repository>
     <!-- others -->
     <repository>

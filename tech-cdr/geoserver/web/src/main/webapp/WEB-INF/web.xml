@@ -85,15 +85,20 @@
 	</context-param>
 
 	<context-param>
-	  <param-name>FAO_STATS_LAYERS_PREFIX</param-name>
-	  <param-value>FAODATA:mgd_stats</param-value>
+		<param-name>FAO_STATS_LAYERS_PREFIX</param-name>
+		<param-value>FAODATA:mgd_stats</param-value>
 	</context-param>
-	
+
 	<context-param>
-	  <param-name>FAO_GEOMETRIES_TABLE_UUID_FIELD</param-name>
-	  <param-value>uuid_location</param-value>
+		<param-name>FAO_GEOMETRIES_TABLE_UUID_FIELD</param-name>
+		<param-value>uuid_location</param-value>
 	</context-param>
-	
+
+	<context-param>
+		<param-name>FAO_MAPSETS_DATASOURCE</param-name>
+		<param-value>jdbc/geospatial</param-value>
+	</context-param>
+
 	<!-- FILTERS -->
 	<filter>
 		<filter-name>FAO Kibana Logs Filter</filter-name>
@@ -116,24 +121,14 @@
 	</filter>
 
 	<filter>
-	   <filter-name>FAO DynamicLayer Filter</filter-name>
-	   <filter-class>org.fao.data.map.geoserver.filter.dynamiclayer.DynamicLayerFilter</filter-class>
-	 </filter>
-	 
-	<!-- filter>
-		<filter-name>FAO DynamicStyle Filter</filter-name>
-		<filter-class>org.fao.data.map.geoserver.filter.dynamicstyle.DynamicStyleFilter</filter-class>
+		<filter-name>FAO DynamicLayer Filter</filter-name>
+		<filter-class>org.fao.data.map.geoserver.filter.dynamiclayer.DynamicLayerFilter</filter-class>
 	</filter>
 
 	<filter>
-		<filter-name>FAO ViewParams Filter</filter-name>
-		<filter-class>org.fao.data.map.geoserver.filter.dynamicparams.DynamicParamsFilter</filter-class>
+		<filter-name>FAO MapSet Filter</filter-name>
+		<filter-class>org.fao.data.map.geoserver.filter.mapset.MapsetFilter</filter-class>
 	</filter>
-
-	<filter>
-		<filter-name>FAO ClearCache Filter</filter-name>
-		<filter-class>org.fao.data.map.geoserver.filter.cache.ClearCacheFilter</filter-class>
-	</filter-->
 	<!-- ====================== FAO ========================= -->
 
 	<filter>
@@ -243,24 +238,14 @@
 	</filter-mapping>
 
 	<filter-mapping>
-	  <filter-name>FAO DynamicLayer Filter</filter-name>
-	  <url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
-	<!-- filter-mapping>
-		<filter-name>FAO DynamicStyle Filter</filter-name>
+		<filter-name>FAO DynamicLayer Filter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
 	<filter-mapping>
-		<filter-name>FAO ViewParams Filter</filter-name>
+		<filter-name>FAO MapSet Filter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
-	<filter-mapping>
-		<filter-name>FAO ClearCache Filter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping-->
 	<!-- ====================== FAO ========================= -->
 
 	<filter-mapping>
@@ -425,13 +410,13 @@
 	<resource-ref>
 		<description>PostgreSQL HUNGERMAP Datasource</description>
 		<res-ref-name>jdbc/hungermap</res-ref-name>
-      <res-type>javax.sql.DataSource</res-type>
-      <res-auth>Container</res-auth>
-    </resource-ref>
-    
-    <resource-ref>
-      <description>PostgreSQL FAODATA MGD Datasource</description>
-      <res-ref-name>jdbc/faodata</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<resource-ref>
+		<description>PostgreSQL FAODATA MGD Datasource</description>
+		<res-ref-name>jdbc/faodata</res-ref-name>
 		<res-type>javax.sql.DataSource</res-type>
 		<res-auth>Container</res-auth>
 	</resource-ref>

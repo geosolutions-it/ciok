@@ -39,7 +39,7 @@
     </developer>
   </developers>
   <properties>
-    <geoserver.version>2.2-ENTERPRISE-SNAPSHOT</geoserver.version>
+    <geoserver.version>2.2-CIOK-SNAPSHOT</geoserver.version>
     <fao.filter.version>0.0.19-SNAPSHOT</fao.filter.version>
   </properties>
   <issueManagement>
@@ -80,7 +80,6 @@
         <groupId>org.fao.data.map.geoserver.rest</groupId>
         <artifactId>clearCacheInterface</artifactId>
         <version>${project.version}</version>
-        <!--version>1.0</version-->
       </dependency>
       <!-- WPS -->
       <dependency>
